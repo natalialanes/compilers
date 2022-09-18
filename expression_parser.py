@@ -13,6 +13,8 @@
 # F = ( E ) | num | sin F
 # num = [+-]?([0-9]+(.[0-9]+)?|.[0-9]+)(e[0-9]+)+)?)
 
+#teste bru
+
 import re
 import math
 from functools import partial
