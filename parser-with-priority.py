@@ -5,8 +5,6 @@
 
 # Language definition:
 #
-# C = SC'
-# C' = SC' | &
 # S = A | E
 # A = id = E
 # E = TE'
@@ -43,20 +41,13 @@ class Lexer:
     NUM = 4
     FUNC = 5
     IDENTIFIER = 6
-    EQUAL_OPERATOR = 7
-    
-    symbol_table = { 
-        "sin": Symbol(math.sin, FUNC),
-        "cos": Symbol(math.cos, FUNC),
-        "tan": Symbol(math.tan, FUNC),
-        "log": Symbol(math.log, FUNC)
-    }
+    ASSIGNMENT = 7
+
     def __init__(self, data):
         """Initialize object."""
         self.data = data
         self.current = 0
         self.previous = -1
-        self.lastVar = None
         self.num_re = re.compile(r"[+-]?(\d+(\.\d*)?|\.\d+)(e\d+)?")
         self.id_re = re.compile(r"[a-zA-Z][a-zA-Z]*")
 
@@ -79,6 +70,12 @@ class Lexer:
         # At most une token can be put back in the stream.
         self.current = self.previous
 
+    def get_char(self, current):
+        try:
+            return self.data[current]
+        except Exception:
+            return ''
+
     def peek(self):
         if self.current < len(self.data):
             current = self.current
@@ -88,40 +85,40 @@ class Lexer:
             char = self.data[current]
             current += 1
             if char == "(":
-                return (Lexer.OPEN_PAR, char, current)
+                return Lexer.OPEN_PAR, char, current
             if char == ")":
-                return (Lexer.CLOSE_PAR, char, current)
-
+                return Lexer.CLOSE_PAR, char, current
             # Do not handle minus operator.
             if char in "+/*^":
-                return (Lexer.OPERATOR, char, current)
-            
+                return Lexer.OPERATOR, char, current
             if char == "=":
-                return (Lexer.EQUAL_OPERATOR, char, current)
-
+                return Lexer.ASSIGNMENT, char, current
+            
             if self.id_re.match(char):
                 char_concat = char
-                char = self.data[current]
+                char = self.get_char(current)
                 while self.id_re.match(char):                    
                     char_concat += char
                     current += 1
-                    char = self.data[current]                  
+                    char = self.get_char(current)
                     
                 try:
-                    self.current = current
-                    symbol = self.symbol_table[char_concat]
-                    return (symbol.type, symbol.value, current)
+                    symbol = symbol_table[char_concat]
+
+                    if symbol.type == Lexer.IDENTIFIER:
+                        return symbol.type, char_concat, current
+
+                    return symbol.type, symbol.value, current
                         
                 except Exception:
                     new_symbol = Symbol(None, Lexer.IDENTIFIER)
-                    self.symbol_table[char_concat] = new_symbol
-                    self.lastVar = char_concat
-                    return (new_symbol.type, new_symbol.value, current)
+                    symbol_table[char_concat] = new_symbol
+                    return new_symbol.type, char_concat, current
                 #     raise Exception(
                 #     f"Symbol not defined at {current}: "
                 #     f"{self.data[current - 1:current + 10]}"
                 # )
-
+                    
             match = self.num_re.match(self.data[current - 1 :])
             if match is None:
                 # If there is no match we may have a minus operator
@@ -146,43 +143,37 @@ class Lexer:
         raise StopIteration()
 
 
-def parse_C(data):
-    S = parse_S(data)
-    C_prime = parse_C_prime(data)
-    return S
-
-
-def parse_C_prime(data):
-    S = parse_S(data)
-    C_prime = parse_C_prime(data)
-    return S    
+symbol_table = {
+    "sin": Symbol(math.sin, Lexer.FUNC),
+    "cos": Symbol(math.cos, Lexer.FUNC),
+    "tan": Symbol(math.tan, Lexer.FUNC),
+    "log": Symbol(math.log, Lexer.FUNC)
+}
 
 
 def parse_S(data):
     try:
+        last_current = data.current
         token, value = next(data)
     except StopIteration:
         return False
-    
-    if token not in [Lexer.IDENTIFIER, Lexer.FUNC]:
+
+    identifier = value
+
+    if token not in [Lexer.IDENTIFIER]:
+        data.current = last_current
         return parse_E(data)
     else:
         token, value = next(data)
         if value == '=':
-            return parse_A(data, value)
+            return parse_A(data, identifier)
         else:
+            data.current = last_current
             return parse_E(data)
 
 
 def parse_A(data, id_name):
-    try:
-        token, value = next(data)
-    except StopIteration:
-        return False
-    
-    if id_name == '=':
-        data.symbol_table[data.lastVar].value = float(value)
-
+    symbol_table[id_name] = Symbol(parse_E(data), Lexer.IDENTIFIER)
     return True
 
 
@@ -275,6 +266,7 @@ def parse_F(data):
     """Parse rule F."""
     # print("F -> num | (E)")
     try:
+        last_current = data.current
         token, value = next(data)
     except StopIteration:
         raise Exception("Unexpected end of source.") from None
@@ -290,18 +282,20 @@ def parse_F(data):
     if token == Lexer.NUM:
         # F -> num   { $0 = float(num) }
         return float(value)
-    if token == Lexer.IDENTIFIER or token == Lexer.FUNC:
+    if token == Lexer.IDENTIFIER:
+        data.current = last_current
+    if token == Lexer.FUNC or Lexer.IDENTIFIER:
         F_PRIME = parse_F_prime(data)
         if token == Lexer.FUNC:
             return value(F_PRIME)
         else:
-            return value
+            return F_PRIME
     raise data.error(f"Unexpected token: {value}.")
 
 
 def parse_F_prime(data):
     try:
-        token, operator = next(data)
+        token, value = next(data)
     except StopIteration:
         return 1
     if token == Lexer.OPEN_PAR:
@@ -313,9 +307,11 @@ def parse_F_prime(data):
         except StopIteration:
             data.error("Unbalanced parenthesis.")
         return E
+    if token == Lexer.IDENTIFIER:
+        return symbol_table[value].value
     
     if token not in [Lexer.OPEN_PAR]:
-        data.error(f"Invalid character: {operator}")
+        data.error(f"Invalid character: {value}")
 
     data.put_back()
     return 1
@@ -329,39 +325,45 @@ def parse(source_code):
 
 if __name__ == "__main__":
     expressions = [
-        ("abcd = 2", True),
-        # ("2 * 3", 2 * 3)
-        # ("5 / 4", 5 / 4),
-        # ("2 * 3 + 1", 2 * 3 + 1),
-        # ("1 + 2 * 3", 1 + 2 * 3),
-        # ("(2 * 3) + 1", (2 * 3) + 1),
-        # ("2 * (3 + 1)", 2 * (3 + 1)),
-        # ("(2 + 1) * 3", (2 + 1) * 3),
-        # ("-2 + 3", -2 + 3),
-        # ("5 + (-2)", 5 + (-2)),
-        # ("5 * -2", 5 * -2),
-        # ("-1 - -2", -1 - -2),
-        # ("-1 - 2", -1 - 2),
-        # ("4 - 5", 4 - 5),
-        # ("1 - 2", 1 - 2),
-        # ("3 - ((8 + 3) * -2)", 3 - ((8 + 3) * -2)),
-        # ("2.01e2 - 200", 2.01e2 - 200),
-        # ("2*3*4", 2 * 3 * 4),
-        # ("2 + 3 + 4 * 3 * 2 + 2", 2 + 3 + 4 * 3 * 2 * 2),
-        # ("10 + 11", 10 + 11),
-        # ("2 ^ 3", math.pow(2, 3)),
-        # ("3 * 3 ^ 2" ,3 * math.pow(3, 2)),
-        # ("2 ^ 2 + 3", math.pow(2, 2) + 3),
-        # ("2 ^ (2 + 3)", math.pow(2, 5)),
-        # ("cos(10)", math.cos(10)),
-        # ("sin(20)", math.sin(20)),
-        # ("tan(30)", math.tan(30)),
-        # ("3 * cos(10)", 3* math.cos(10)),
-        # ("sin(20) + 15", math.sin(20) + 15),
-        # ("tan(30) + sin(20)", math.tan(30) + math.sin(20)),
-        # ("tan(sin(2^3)) + sin(20)", math.tan(math.sin(math.pow(2, 3))) + math.sin(20)),
-        # ("log(20) + 15", math.log(20) + 15),
-        # ("log(160)", math.log(160))
+        ("a = 2", True),
+        ("a * a", 2 * 2),
+        ("5 / 4", 5 / 4),
+        ("2 * 3 + 1", 2 * 3 + 1),
+        ("1 + 2 * 3", 1 + 2 * 3),
+        ("(2 * 3) + 1", (2 * 3) + 1),
+        ("2 * (3 + 1)", 2 * (3 + 1)),
+        ("(2 + 1) * 3", (2 + 1) * 3),
+        ("-2 + 3", -2 + 3),
+        ("5 + (-2)", 5 + (-2)),
+        ("5 * -2", 5 * -2),
+        ("-1 - -2", -1 - -2),
+        ("-1 - 2", -1 - 2),
+        ("4 - 5", 4 - 5),
+        ("1 - 2", 1 - 2),
+        ("3 - ((8 + 3) * -2)", 3 - ((8 + 3) * -2)),
+        ("2.01e2 - 200", 2.01e2 - 200),
+        ("2*3*4", 2 * 3 * 4),
+        ("2 + 3 + 4 * 3 * 2 * 2", 2 + 3 + 4 * 3 * 2 * 2),
+        ("10 + 11", 10 + 11),
+        ("2 ^ 3", math.pow(2, 3)),
+        ("3 * 3 ^ 2" ,3 * math.pow(3, 2)),
+        ("2 ^ 2 + 3", math.pow(2, 2) + 3),
+        ("2 ^ (2 + 3)", math.pow(2, 5)),
+        ("cos(10)", math.cos(10)),
+        ("sin(20)", math.sin(20)),
+        ("tan(30)", math.tan(30)),
+        ("3 * cos(10)", 3* math.cos(10)),
+        ("sin(20) + 15", math.sin(20) + 15),
+        ("tan(30) + sin(20)", math.tan(30) + math.sin(20)),
+        ("tan(sin(2^3)) + sin(20)", math.tan(math.sin(math.pow(2, 3))) + math.sin(20)),
+        ("log(20) + 15", math.log(20) + 15),
+        ("log(160)", math.log(160)),
+        ("abc = log(160)", True),
+        ("abc + 1", math.log(160) + 1),
+        ("abc = abc + 1", True),
+        ("abc * 2", (math.log(160) + 1) * 2),
+        ("fun = log(200)", True),
+        ("30 + fun", 30 + math.log(200))
     ]
     for expression, expected in expressions:
         result = "PASS" if parse(expression) == expected else "FAIL"
