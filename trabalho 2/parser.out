@@ -1,0 +1,2536 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> expression other_expression
+Rule 2     other_expression -> expression other_expression
+Rule 3     other_expression -> empty
+Rule 4     expression -> value_expr
+Rule 5     expression -> logo_expr
+Rule 6     expression -> if_stmt
+Rule 7     expression -> loop_stmt
+Rule 8     expression -> assign_expr
+Rule 9     expression -> params
+Rule 10    empty -> <empty>
+Rule 11    logo_expr -> PENUP
+Rule 12    logo_expr -> PU
+Rule 13    logo_expr -> PENDOWN
+Rule 14    logo_expr -> PD
+Rule 15    logo_expr -> WIPECLEAN
+Rule 16    logo_expr -> WC
+Rule 17    logo_expr -> CLEARSCREEN
+Rule 18    logo_expr -> CS
+Rule 19    logo_expr -> HOME
+Rule 20    logo_expr -> XCOR
+Rule 21    logo_expr -> YCOR
+Rule 22    logo_expr -> HEADING
+Rule 23    logo_expr -> RANDOM
+Rule 24    logo_expr -> TYPEIN
+Rule 25    logo_expr -> FORWARD value_expr
+Rule 26    logo_expr -> FO value_expr
+Rule 27    logo_expr -> BK value_expr
+Rule 28    logo_expr -> BACKWARD value_expr
+Rule 29    logo_expr -> RIGHT value_expr
+Rule 30    logo_expr -> RT value_expr
+Rule 31    logo_expr -> LEFT value_expr
+Rule 32    logo_expr -> LT value_expr
+Rule 33    logo_expr -> PRINT value_expr
+Rule 34    logo_expr -> SETXY value_expr value_expr
+Rule 35    value_expr -> NUMBER
+Rule 36    loop_stmt -> WHILE bool_expr THEN expression END
+Rule 37    bool_expr_operator -> AND
+Rule 38    bool_expr_operator -> OR
+Rule 39    if_stmt -> IF bool_expr THEN expression END
+Rule 40    if_stmt -> IF bool_expr THEN expression ELSE expression END
+Rule 41    bool_expr -> value_expr EQUALS value_expr
+Rule 42    bool_expr -> value_expr GREATER value_expr
+Rule 43    bool_expr -> value_expr LOWER value_expr
+Rule 44    bool_expr -> value_expr GREATEQ value_expr
+Rule 45    bool_expr -> value_expr LOWEQ value_expr
+Rule 46    bool_expr -> bool_expr bool_expr_operator bool_expr
+Rule 47    assign_expr -> TO IDENTIFIER params expression END
+Rule 48    params -> ARGUMENT
+Rule 49    params -> params ARGUMENT
+
+Terminals, with rules where they appear
+
+AND                  : 37
+ARGUMENT             : 48 49
+BACKWARD             : 28
+BK                   : 27
+CLEARSCREEN          : 17
+CS                   : 18
+ELSE                 : 40
+END                  : 36 39 40 47
+EQUALS               : 41
+FO                   : 26
+FORWARD              : 25
+GREATEQ              : 44
+GREATER              : 42
+HEADING              : 22
+HOME                 : 19
+IDENTIFIER           : 47
+IF                   : 39 40
+LEFT                 : 31
+LOWEQ                : 45
+LOWER                : 43
+LT                   : 32
+NUMBER               : 35
+OR                   : 38
+PD                   : 14
+PENDOWN              : 13
+PENUP                : 11
+PRINT                : 33
+PU                   : 12
+RANDOM               : 23
+RIGHT                : 29
+RT                   : 30
+SETXY                : 34
+THEN                 : 36 39 40
+TO                   : 47
+TYPEIN               : 24
+WC                   : 16
+WHILE                : 36
+WIPECLEAN            : 15
+XCOR                 : 20
+YCOR                 : 21
+error                : 
+
+Nonterminals, with rules where they appear
+
+assign_expr          : 8
+bool_expr            : 36 39 40 46 46
+bool_expr_operator   : 46
+empty                : 3
+expression           : 1 2 36 39 40 40 47
+if_stmt              : 6
+logo_expr            : 5
+loop_stmt            : 7
+other_expression     : 1 2
+params               : 9 47 49
+program              : 0
+value_expr           : 4 25 26 27 28 29 30 31 32 33 34 34 41 41 42 42 43 43 44 44 45 45
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . expression other_expression
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+    ARGUMENT        shift and go to state 37
+
+    program                        shift and go to state 1
+    expression                     shift and go to state 2
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+    params                         shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> expression . other_expression
+    (2) other_expression -> . expression other_expression
+    (3) other_expression -> . empty
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (10) empty -> .
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    $end            reduce using rule 10 (empty -> .)
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+    ARGUMENT        shift and go to state 37
+
+    expression                     shift and go to state 38
+    other_expression               shift and go to state 39
+    empty                          shift and go to state 40
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+    params                         shift and go to state 8
+
+state 3
+
+    (4) expression -> value_expr .
+
+    NUMBER          reduce using rule 4 (expression -> value_expr .)
+    PENUP           reduce using rule 4 (expression -> value_expr .)
+    PU              reduce using rule 4 (expression -> value_expr .)
+    PENDOWN         reduce using rule 4 (expression -> value_expr .)
+    PD              reduce using rule 4 (expression -> value_expr .)
+    WIPECLEAN       reduce using rule 4 (expression -> value_expr .)
+    WC              reduce using rule 4 (expression -> value_expr .)
+    CLEARSCREEN     reduce using rule 4 (expression -> value_expr .)
+    CS              reduce using rule 4 (expression -> value_expr .)
+    HOME            reduce using rule 4 (expression -> value_expr .)
+    XCOR            reduce using rule 4 (expression -> value_expr .)
+    YCOR            reduce using rule 4 (expression -> value_expr .)
+    HEADING         reduce using rule 4 (expression -> value_expr .)
+    RANDOM          reduce using rule 4 (expression -> value_expr .)
+    TYPEIN          reduce using rule 4 (expression -> value_expr .)
+    FORWARD         reduce using rule 4 (expression -> value_expr .)
+    FO              reduce using rule 4 (expression -> value_expr .)
+    BK              reduce using rule 4 (expression -> value_expr .)
+    BACKWARD        reduce using rule 4 (expression -> value_expr .)
+    RIGHT           reduce using rule 4 (expression -> value_expr .)
+    RT              reduce using rule 4 (expression -> value_expr .)
+    LEFT            reduce using rule 4 (expression -> value_expr .)
+    LT              reduce using rule 4 (expression -> value_expr .)
+    PRINT           reduce using rule 4 (expression -> value_expr .)
+    SETXY           reduce using rule 4 (expression -> value_expr .)
+    IF              reduce using rule 4 (expression -> value_expr .)
+    WHILE           reduce using rule 4 (expression -> value_expr .)
+    TO              reduce using rule 4 (expression -> value_expr .)
+    ARGUMENT        reduce using rule 4 (expression -> value_expr .)
+    $end            reduce using rule 4 (expression -> value_expr .)
+    END             reduce using rule 4 (expression -> value_expr .)
+    ELSE            reduce using rule 4 (expression -> value_expr .)
+
+
+state 4
+
+    (5) expression -> logo_expr .
+
+    NUMBER          reduce using rule 5 (expression -> logo_expr .)
+    PENUP           reduce using rule 5 (expression -> logo_expr .)
+    PU              reduce using rule 5 (expression -> logo_expr .)
+    PENDOWN         reduce using rule 5 (expression -> logo_expr .)
+    PD              reduce using rule 5 (expression -> logo_expr .)
+    WIPECLEAN       reduce using rule 5 (expression -> logo_expr .)
+    WC              reduce using rule 5 (expression -> logo_expr .)
+    CLEARSCREEN     reduce using rule 5 (expression -> logo_expr .)
+    CS              reduce using rule 5 (expression -> logo_expr .)
+    HOME            reduce using rule 5 (expression -> logo_expr .)
+    XCOR            reduce using rule 5 (expression -> logo_expr .)
+    YCOR            reduce using rule 5 (expression -> logo_expr .)
+    HEADING         reduce using rule 5 (expression -> logo_expr .)
+    RANDOM          reduce using rule 5 (expression -> logo_expr .)
+    TYPEIN          reduce using rule 5 (expression -> logo_expr .)
+    FORWARD         reduce using rule 5 (expression -> logo_expr .)
+    FO              reduce using rule 5 (expression -> logo_expr .)
+    BK              reduce using rule 5 (expression -> logo_expr .)
+    BACKWARD        reduce using rule 5 (expression -> logo_expr .)
+    RIGHT           reduce using rule 5 (expression -> logo_expr .)
+    RT              reduce using rule 5 (expression -> logo_expr .)
+    LEFT            reduce using rule 5 (expression -> logo_expr .)
+    LT              reduce using rule 5 (expression -> logo_expr .)
+    PRINT           reduce using rule 5 (expression -> logo_expr .)
+    SETXY           reduce using rule 5 (expression -> logo_expr .)
+    IF              reduce using rule 5 (expression -> logo_expr .)
+    WHILE           reduce using rule 5 (expression -> logo_expr .)
+    TO              reduce using rule 5 (expression -> logo_expr .)
+    ARGUMENT        reduce using rule 5 (expression -> logo_expr .)
+    $end            reduce using rule 5 (expression -> logo_expr .)
+    END             reduce using rule 5 (expression -> logo_expr .)
+    ELSE            reduce using rule 5 (expression -> logo_expr .)
+
+
+state 5
+
+    (6) expression -> if_stmt .
+
+    NUMBER          reduce using rule 6 (expression -> if_stmt .)
+    PENUP           reduce using rule 6 (expression -> if_stmt .)
+    PU              reduce using rule 6 (expression -> if_stmt .)
+    PENDOWN         reduce using rule 6 (expression -> if_stmt .)
+    PD              reduce using rule 6 (expression -> if_stmt .)
+    WIPECLEAN       reduce using rule 6 (expression -> if_stmt .)
+    WC              reduce using rule 6 (expression -> if_stmt .)
+    CLEARSCREEN     reduce using rule 6 (expression -> if_stmt .)
+    CS              reduce using rule 6 (expression -> if_stmt .)
+    HOME            reduce using rule 6 (expression -> if_stmt .)
+    XCOR            reduce using rule 6 (expression -> if_stmt .)
+    YCOR            reduce using rule 6 (expression -> if_stmt .)
+    HEADING         reduce using rule 6 (expression -> if_stmt .)
+    RANDOM          reduce using rule 6 (expression -> if_stmt .)
+    TYPEIN          reduce using rule 6 (expression -> if_stmt .)
+    FORWARD         reduce using rule 6 (expression -> if_stmt .)
+    FO              reduce using rule 6 (expression -> if_stmt .)
+    BK              reduce using rule 6 (expression -> if_stmt .)
+    BACKWARD        reduce using rule 6 (expression -> if_stmt .)
+    RIGHT           reduce using rule 6 (expression -> if_stmt .)
+    RT              reduce using rule 6 (expression -> if_stmt .)
+    LEFT            reduce using rule 6 (expression -> if_stmt .)
+    LT              reduce using rule 6 (expression -> if_stmt .)
+    PRINT           reduce using rule 6 (expression -> if_stmt .)
+    SETXY           reduce using rule 6 (expression -> if_stmt .)
+    IF              reduce using rule 6 (expression -> if_stmt .)
+    WHILE           reduce using rule 6 (expression -> if_stmt .)
+    TO              reduce using rule 6 (expression -> if_stmt .)
+    ARGUMENT        reduce using rule 6 (expression -> if_stmt .)
+    $end            reduce using rule 6 (expression -> if_stmt .)
+    END             reduce using rule 6 (expression -> if_stmt .)
+    ELSE            reduce using rule 6 (expression -> if_stmt .)
+
+
+state 6
+
+    (7) expression -> loop_stmt .
+
+    NUMBER          reduce using rule 7 (expression -> loop_stmt .)
+    PENUP           reduce using rule 7 (expression -> loop_stmt .)
+    PU              reduce using rule 7 (expression -> loop_stmt .)
+    PENDOWN         reduce using rule 7 (expression -> loop_stmt .)
+    PD              reduce using rule 7 (expression -> loop_stmt .)
+    WIPECLEAN       reduce using rule 7 (expression -> loop_stmt .)
+    WC              reduce using rule 7 (expression -> loop_stmt .)
+    CLEARSCREEN     reduce using rule 7 (expression -> loop_stmt .)
+    CS              reduce using rule 7 (expression -> loop_stmt .)
+    HOME            reduce using rule 7 (expression -> loop_stmt .)
+    XCOR            reduce using rule 7 (expression -> loop_stmt .)
+    YCOR            reduce using rule 7 (expression -> loop_stmt .)
+    HEADING         reduce using rule 7 (expression -> loop_stmt .)
+    RANDOM          reduce using rule 7 (expression -> loop_stmt .)
+    TYPEIN          reduce using rule 7 (expression -> loop_stmt .)
+    FORWARD         reduce using rule 7 (expression -> loop_stmt .)
+    FO              reduce using rule 7 (expression -> loop_stmt .)
+    BK              reduce using rule 7 (expression -> loop_stmt .)
+    BACKWARD        reduce using rule 7 (expression -> loop_stmt .)
+    RIGHT           reduce using rule 7 (expression -> loop_stmt .)
+    RT              reduce using rule 7 (expression -> loop_stmt .)
+    LEFT            reduce using rule 7 (expression -> loop_stmt .)
+    LT              reduce using rule 7 (expression -> loop_stmt .)
+    PRINT           reduce using rule 7 (expression -> loop_stmt .)
+    SETXY           reduce using rule 7 (expression -> loop_stmt .)
+    IF              reduce using rule 7 (expression -> loop_stmt .)
+    WHILE           reduce using rule 7 (expression -> loop_stmt .)
+    TO              reduce using rule 7 (expression -> loop_stmt .)
+    ARGUMENT        reduce using rule 7 (expression -> loop_stmt .)
+    $end            reduce using rule 7 (expression -> loop_stmt .)
+    END             reduce using rule 7 (expression -> loop_stmt .)
+    ELSE            reduce using rule 7 (expression -> loop_stmt .)
+
+
+state 7
+
+    (8) expression -> assign_expr .
+
+    NUMBER          reduce using rule 8 (expression -> assign_expr .)
+    PENUP           reduce using rule 8 (expression -> assign_expr .)
+    PU              reduce using rule 8 (expression -> assign_expr .)
+    PENDOWN         reduce using rule 8 (expression -> assign_expr .)
+    PD              reduce using rule 8 (expression -> assign_expr .)
+    WIPECLEAN       reduce using rule 8 (expression -> assign_expr .)
+    WC              reduce using rule 8 (expression -> assign_expr .)
+    CLEARSCREEN     reduce using rule 8 (expression -> assign_expr .)
+    CS              reduce using rule 8 (expression -> assign_expr .)
+    HOME            reduce using rule 8 (expression -> assign_expr .)
+    XCOR            reduce using rule 8 (expression -> assign_expr .)
+    YCOR            reduce using rule 8 (expression -> assign_expr .)
+    HEADING         reduce using rule 8 (expression -> assign_expr .)
+    RANDOM          reduce using rule 8 (expression -> assign_expr .)
+    TYPEIN          reduce using rule 8 (expression -> assign_expr .)
+    FORWARD         reduce using rule 8 (expression -> assign_expr .)
+    FO              reduce using rule 8 (expression -> assign_expr .)
+    BK              reduce using rule 8 (expression -> assign_expr .)
+    BACKWARD        reduce using rule 8 (expression -> assign_expr .)
+    RIGHT           reduce using rule 8 (expression -> assign_expr .)
+    RT              reduce using rule 8 (expression -> assign_expr .)
+    LEFT            reduce using rule 8 (expression -> assign_expr .)
+    LT              reduce using rule 8 (expression -> assign_expr .)
+    PRINT           reduce using rule 8 (expression -> assign_expr .)
+    SETXY           reduce using rule 8 (expression -> assign_expr .)
+    IF              reduce using rule 8 (expression -> assign_expr .)
+    WHILE           reduce using rule 8 (expression -> assign_expr .)
+    TO              reduce using rule 8 (expression -> assign_expr .)
+    ARGUMENT        reduce using rule 8 (expression -> assign_expr .)
+    $end            reduce using rule 8 (expression -> assign_expr .)
+    END             reduce using rule 8 (expression -> assign_expr .)
+    ELSE            reduce using rule 8 (expression -> assign_expr .)
+
+
+state 8
+
+    (9) expression -> params .
+    (49) params -> params . ARGUMENT
+
+  ! shift/reduce conflict for ARGUMENT resolved as shift
+    NUMBER          reduce using rule 9 (expression -> params .)
+    PENUP           reduce using rule 9 (expression -> params .)
+    PU              reduce using rule 9 (expression -> params .)
+    PENDOWN         reduce using rule 9 (expression -> params .)
+    PD              reduce using rule 9 (expression -> params .)
+    WIPECLEAN       reduce using rule 9 (expression -> params .)
+    WC              reduce using rule 9 (expression -> params .)
+    CLEARSCREEN     reduce using rule 9 (expression -> params .)
+    CS              reduce using rule 9 (expression -> params .)
+    HOME            reduce using rule 9 (expression -> params .)
+    XCOR            reduce using rule 9 (expression -> params .)
+    YCOR            reduce using rule 9 (expression -> params .)
+    HEADING         reduce using rule 9 (expression -> params .)
+    RANDOM          reduce using rule 9 (expression -> params .)
+    TYPEIN          reduce using rule 9 (expression -> params .)
+    FORWARD         reduce using rule 9 (expression -> params .)
+    FO              reduce using rule 9 (expression -> params .)
+    BK              reduce using rule 9 (expression -> params .)
+    BACKWARD        reduce using rule 9 (expression -> params .)
+    RIGHT           reduce using rule 9 (expression -> params .)
+    RT              reduce using rule 9 (expression -> params .)
+    LEFT            reduce using rule 9 (expression -> params .)
+    LT              reduce using rule 9 (expression -> params .)
+    PRINT           reduce using rule 9 (expression -> params .)
+    SETXY           reduce using rule 9 (expression -> params .)
+    IF              reduce using rule 9 (expression -> params .)
+    WHILE           reduce using rule 9 (expression -> params .)
+    TO              reduce using rule 9 (expression -> params .)
+    $end            reduce using rule 9 (expression -> params .)
+    END             reduce using rule 9 (expression -> params .)
+    ELSE            reduce using rule 9 (expression -> params .)
+    ARGUMENT        shift and go to state 41
+
+  ! ARGUMENT        [ reduce using rule 9 (expression -> params .) ]
+
+
+state 9
+
+    (35) value_expr -> NUMBER .
+
+    NUMBER          reduce using rule 35 (value_expr -> NUMBER .)
+    PENUP           reduce using rule 35 (value_expr -> NUMBER .)
+    PU              reduce using rule 35 (value_expr -> NUMBER .)
+    PENDOWN         reduce using rule 35 (value_expr -> NUMBER .)
+    PD              reduce using rule 35 (value_expr -> NUMBER .)
+    WIPECLEAN       reduce using rule 35 (value_expr -> NUMBER .)
+    WC              reduce using rule 35 (value_expr -> NUMBER .)
+    CLEARSCREEN     reduce using rule 35 (value_expr -> NUMBER .)
+    CS              reduce using rule 35 (value_expr -> NUMBER .)
+    HOME            reduce using rule 35 (value_expr -> NUMBER .)
+    XCOR            reduce using rule 35 (value_expr -> NUMBER .)
+    YCOR            reduce using rule 35 (value_expr -> NUMBER .)
+    HEADING         reduce using rule 35 (value_expr -> NUMBER .)
+    RANDOM          reduce using rule 35 (value_expr -> NUMBER .)
+    TYPEIN          reduce using rule 35 (value_expr -> NUMBER .)
+    FORWARD         reduce using rule 35 (value_expr -> NUMBER .)
+    FO              reduce using rule 35 (value_expr -> NUMBER .)
+    BK              reduce using rule 35 (value_expr -> NUMBER .)
+    BACKWARD        reduce using rule 35 (value_expr -> NUMBER .)
+    RIGHT           reduce using rule 35 (value_expr -> NUMBER .)
+    RT              reduce using rule 35 (value_expr -> NUMBER .)
+    LEFT            reduce using rule 35 (value_expr -> NUMBER .)
+    LT              reduce using rule 35 (value_expr -> NUMBER .)
+    PRINT           reduce using rule 35 (value_expr -> NUMBER .)
+    SETXY           reduce using rule 35 (value_expr -> NUMBER .)
+    IF              reduce using rule 35 (value_expr -> NUMBER .)
+    WHILE           reduce using rule 35 (value_expr -> NUMBER .)
+    TO              reduce using rule 35 (value_expr -> NUMBER .)
+    ARGUMENT        reduce using rule 35 (value_expr -> NUMBER .)
+    $end            reduce using rule 35 (value_expr -> NUMBER .)
+    END             reduce using rule 35 (value_expr -> NUMBER .)
+    ELSE            reduce using rule 35 (value_expr -> NUMBER .)
+    EQUALS          reduce using rule 35 (value_expr -> NUMBER .)
+    GREATER         reduce using rule 35 (value_expr -> NUMBER .)
+    LOWER           reduce using rule 35 (value_expr -> NUMBER .)
+    GREATEQ         reduce using rule 35 (value_expr -> NUMBER .)
+    LOWEQ           reduce using rule 35 (value_expr -> NUMBER .)
+    THEN            reduce using rule 35 (value_expr -> NUMBER .)
+    AND             reduce using rule 35 (value_expr -> NUMBER .)
+    OR              reduce using rule 35 (value_expr -> NUMBER .)
+
+
+state 10
+
+    (11) logo_expr -> PENUP .
+
+    NUMBER          reduce using rule 11 (logo_expr -> PENUP .)
+    PENUP           reduce using rule 11 (logo_expr -> PENUP .)
+    PU              reduce using rule 11 (logo_expr -> PENUP .)
+    PENDOWN         reduce using rule 11 (logo_expr -> PENUP .)
+    PD              reduce using rule 11 (logo_expr -> PENUP .)
+    WIPECLEAN       reduce using rule 11 (logo_expr -> PENUP .)
+    WC              reduce using rule 11 (logo_expr -> PENUP .)
+    CLEARSCREEN     reduce using rule 11 (logo_expr -> PENUP .)
+    CS              reduce using rule 11 (logo_expr -> PENUP .)
+    HOME            reduce using rule 11 (logo_expr -> PENUP .)
+    XCOR            reduce using rule 11 (logo_expr -> PENUP .)
+    YCOR            reduce using rule 11 (logo_expr -> PENUP .)
+    HEADING         reduce using rule 11 (logo_expr -> PENUP .)
+    RANDOM          reduce using rule 11 (logo_expr -> PENUP .)
+    TYPEIN          reduce using rule 11 (logo_expr -> PENUP .)
+    FORWARD         reduce using rule 11 (logo_expr -> PENUP .)
+    FO              reduce using rule 11 (logo_expr -> PENUP .)
+    BK              reduce using rule 11 (logo_expr -> PENUP .)
+    BACKWARD        reduce using rule 11 (logo_expr -> PENUP .)
+    RIGHT           reduce using rule 11 (logo_expr -> PENUP .)
+    RT              reduce using rule 11 (logo_expr -> PENUP .)
+    LEFT            reduce using rule 11 (logo_expr -> PENUP .)
+    LT              reduce using rule 11 (logo_expr -> PENUP .)
+    PRINT           reduce using rule 11 (logo_expr -> PENUP .)
+    SETXY           reduce using rule 11 (logo_expr -> PENUP .)
+    IF              reduce using rule 11 (logo_expr -> PENUP .)
+    WHILE           reduce using rule 11 (logo_expr -> PENUP .)
+    TO              reduce using rule 11 (logo_expr -> PENUP .)
+    ARGUMENT        reduce using rule 11 (logo_expr -> PENUP .)
+    $end            reduce using rule 11 (logo_expr -> PENUP .)
+    END             reduce using rule 11 (logo_expr -> PENUP .)
+    ELSE            reduce using rule 11 (logo_expr -> PENUP .)
+
+
+state 11
+
+    (12) logo_expr -> PU .
+
+    NUMBER          reduce using rule 12 (logo_expr -> PU .)
+    PENUP           reduce using rule 12 (logo_expr -> PU .)
+    PU              reduce using rule 12 (logo_expr -> PU .)
+    PENDOWN         reduce using rule 12 (logo_expr -> PU .)
+    PD              reduce using rule 12 (logo_expr -> PU .)
+    WIPECLEAN       reduce using rule 12 (logo_expr -> PU .)
+    WC              reduce using rule 12 (logo_expr -> PU .)
+    CLEARSCREEN     reduce using rule 12 (logo_expr -> PU .)
+    CS              reduce using rule 12 (logo_expr -> PU .)
+    HOME            reduce using rule 12 (logo_expr -> PU .)
+    XCOR            reduce using rule 12 (logo_expr -> PU .)
+    YCOR            reduce using rule 12 (logo_expr -> PU .)
+    HEADING         reduce using rule 12 (logo_expr -> PU .)
+    RANDOM          reduce using rule 12 (logo_expr -> PU .)
+    TYPEIN          reduce using rule 12 (logo_expr -> PU .)
+    FORWARD         reduce using rule 12 (logo_expr -> PU .)
+    FO              reduce using rule 12 (logo_expr -> PU .)
+    BK              reduce using rule 12 (logo_expr -> PU .)
+    BACKWARD        reduce using rule 12 (logo_expr -> PU .)
+    RIGHT           reduce using rule 12 (logo_expr -> PU .)
+    RT              reduce using rule 12 (logo_expr -> PU .)
+    LEFT            reduce using rule 12 (logo_expr -> PU .)
+    LT              reduce using rule 12 (logo_expr -> PU .)
+    PRINT           reduce using rule 12 (logo_expr -> PU .)
+    SETXY           reduce using rule 12 (logo_expr -> PU .)
+    IF              reduce using rule 12 (logo_expr -> PU .)
+    WHILE           reduce using rule 12 (logo_expr -> PU .)
+    TO              reduce using rule 12 (logo_expr -> PU .)
+    ARGUMENT        reduce using rule 12 (logo_expr -> PU .)
+    $end            reduce using rule 12 (logo_expr -> PU .)
+    END             reduce using rule 12 (logo_expr -> PU .)
+    ELSE            reduce using rule 12 (logo_expr -> PU .)
+
+
+state 12
+
+    (13) logo_expr -> PENDOWN .
+
+    NUMBER          reduce using rule 13 (logo_expr -> PENDOWN .)
+    PENUP           reduce using rule 13 (logo_expr -> PENDOWN .)
+    PU              reduce using rule 13 (logo_expr -> PENDOWN .)
+    PENDOWN         reduce using rule 13 (logo_expr -> PENDOWN .)
+    PD              reduce using rule 13 (logo_expr -> PENDOWN .)
+    WIPECLEAN       reduce using rule 13 (logo_expr -> PENDOWN .)
+    WC              reduce using rule 13 (logo_expr -> PENDOWN .)
+    CLEARSCREEN     reduce using rule 13 (logo_expr -> PENDOWN .)
+    CS              reduce using rule 13 (logo_expr -> PENDOWN .)
+    HOME            reduce using rule 13 (logo_expr -> PENDOWN .)
+    XCOR            reduce using rule 13 (logo_expr -> PENDOWN .)
+    YCOR            reduce using rule 13 (logo_expr -> PENDOWN .)
+    HEADING         reduce using rule 13 (logo_expr -> PENDOWN .)
+    RANDOM          reduce using rule 13 (logo_expr -> PENDOWN .)
+    TYPEIN          reduce using rule 13 (logo_expr -> PENDOWN .)
+    FORWARD         reduce using rule 13 (logo_expr -> PENDOWN .)
+    FO              reduce using rule 13 (logo_expr -> PENDOWN .)
+    BK              reduce using rule 13 (logo_expr -> PENDOWN .)
+    BACKWARD        reduce using rule 13 (logo_expr -> PENDOWN .)
+    RIGHT           reduce using rule 13 (logo_expr -> PENDOWN .)
+    RT              reduce using rule 13 (logo_expr -> PENDOWN .)
+    LEFT            reduce using rule 13 (logo_expr -> PENDOWN .)
+    LT              reduce using rule 13 (logo_expr -> PENDOWN .)
+    PRINT           reduce using rule 13 (logo_expr -> PENDOWN .)
+    SETXY           reduce using rule 13 (logo_expr -> PENDOWN .)
+    IF              reduce using rule 13 (logo_expr -> PENDOWN .)
+    WHILE           reduce using rule 13 (logo_expr -> PENDOWN .)
+    TO              reduce using rule 13 (logo_expr -> PENDOWN .)
+    ARGUMENT        reduce using rule 13 (logo_expr -> PENDOWN .)
+    $end            reduce using rule 13 (logo_expr -> PENDOWN .)
+    END             reduce using rule 13 (logo_expr -> PENDOWN .)
+    ELSE            reduce using rule 13 (logo_expr -> PENDOWN .)
+
+
+state 13
+
+    (14) logo_expr -> PD .
+
+    NUMBER          reduce using rule 14 (logo_expr -> PD .)
+    PENUP           reduce using rule 14 (logo_expr -> PD .)
+    PU              reduce using rule 14 (logo_expr -> PD .)
+    PENDOWN         reduce using rule 14 (logo_expr -> PD .)
+    PD              reduce using rule 14 (logo_expr -> PD .)
+    WIPECLEAN       reduce using rule 14 (logo_expr -> PD .)
+    WC              reduce using rule 14 (logo_expr -> PD .)
+    CLEARSCREEN     reduce using rule 14 (logo_expr -> PD .)
+    CS              reduce using rule 14 (logo_expr -> PD .)
+    HOME            reduce using rule 14 (logo_expr -> PD .)
+    XCOR            reduce using rule 14 (logo_expr -> PD .)
+    YCOR            reduce using rule 14 (logo_expr -> PD .)
+    HEADING         reduce using rule 14 (logo_expr -> PD .)
+    RANDOM          reduce using rule 14 (logo_expr -> PD .)
+    TYPEIN          reduce using rule 14 (logo_expr -> PD .)
+    FORWARD         reduce using rule 14 (logo_expr -> PD .)
+    FO              reduce using rule 14 (logo_expr -> PD .)
+    BK              reduce using rule 14 (logo_expr -> PD .)
+    BACKWARD        reduce using rule 14 (logo_expr -> PD .)
+    RIGHT           reduce using rule 14 (logo_expr -> PD .)
+    RT              reduce using rule 14 (logo_expr -> PD .)
+    LEFT            reduce using rule 14 (logo_expr -> PD .)
+    LT              reduce using rule 14 (logo_expr -> PD .)
+    PRINT           reduce using rule 14 (logo_expr -> PD .)
+    SETXY           reduce using rule 14 (logo_expr -> PD .)
+    IF              reduce using rule 14 (logo_expr -> PD .)
+    WHILE           reduce using rule 14 (logo_expr -> PD .)
+    TO              reduce using rule 14 (logo_expr -> PD .)
+    ARGUMENT        reduce using rule 14 (logo_expr -> PD .)
+    $end            reduce using rule 14 (logo_expr -> PD .)
+    END             reduce using rule 14 (logo_expr -> PD .)
+    ELSE            reduce using rule 14 (logo_expr -> PD .)
+
+
+state 14
+
+    (15) logo_expr -> WIPECLEAN .
+
+    NUMBER          reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    PENUP           reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    PU              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    PENDOWN         reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    PD              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    WIPECLEAN       reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    WC              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    CLEARSCREEN     reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    CS              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    HOME            reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    XCOR            reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    YCOR            reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    HEADING         reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    RANDOM          reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    TYPEIN          reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    FORWARD         reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    FO              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    BK              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    BACKWARD        reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    RIGHT           reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    RT              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    LEFT            reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    LT              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    PRINT           reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    SETXY           reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    IF              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    WHILE           reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    TO              reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    ARGUMENT        reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    $end            reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    END             reduce using rule 15 (logo_expr -> WIPECLEAN .)
+    ELSE            reduce using rule 15 (logo_expr -> WIPECLEAN .)
+
+
+state 15
+
+    (16) logo_expr -> WC .
+
+    NUMBER          reduce using rule 16 (logo_expr -> WC .)
+    PENUP           reduce using rule 16 (logo_expr -> WC .)
+    PU              reduce using rule 16 (logo_expr -> WC .)
+    PENDOWN         reduce using rule 16 (logo_expr -> WC .)
+    PD              reduce using rule 16 (logo_expr -> WC .)
+    WIPECLEAN       reduce using rule 16 (logo_expr -> WC .)
+    WC              reduce using rule 16 (logo_expr -> WC .)
+    CLEARSCREEN     reduce using rule 16 (logo_expr -> WC .)
+    CS              reduce using rule 16 (logo_expr -> WC .)
+    HOME            reduce using rule 16 (logo_expr -> WC .)
+    XCOR            reduce using rule 16 (logo_expr -> WC .)
+    YCOR            reduce using rule 16 (logo_expr -> WC .)
+    HEADING         reduce using rule 16 (logo_expr -> WC .)
+    RANDOM          reduce using rule 16 (logo_expr -> WC .)
+    TYPEIN          reduce using rule 16 (logo_expr -> WC .)
+    FORWARD         reduce using rule 16 (logo_expr -> WC .)
+    FO              reduce using rule 16 (logo_expr -> WC .)
+    BK              reduce using rule 16 (logo_expr -> WC .)
+    BACKWARD        reduce using rule 16 (logo_expr -> WC .)
+    RIGHT           reduce using rule 16 (logo_expr -> WC .)
+    RT              reduce using rule 16 (logo_expr -> WC .)
+    LEFT            reduce using rule 16 (logo_expr -> WC .)
+    LT              reduce using rule 16 (logo_expr -> WC .)
+    PRINT           reduce using rule 16 (logo_expr -> WC .)
+    SETXY           reduce using rule 16 (logo_expr -> WC .)
+    IF              reduce using rule 16 (logo_expr -> WC .)
+    WHILE           reduce using rule 16 (logo_expr -> WC .)
+    TO              reduce using rule 16 (logo_expr -> WC .)
+    ARGUMENT        reduce using rule 16 (logo_expr -> WC .)
+    $end            reduce using rule 16 (logo_expr -> WC .)
+    END             reduce using rule 16 (logo_expr -> WC .)
+    ELSE            reduce using rule 16 (logo_expr -> WC .)
+
+
+state 16
+
+    (17) logo_expr -> CLEARSCREEN .
+
+    NUMBER          reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    PENUP           reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    PU              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    PENDOWN         reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    PD              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    WIPECLEAN       reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    WC              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    CLEARSCREEN     reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    CS              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    HOME            reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    XCOR            reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    YCOR            reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    HEADING         reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    RANDOM          reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    TYPEIN          reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    FORWARD         reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    FO              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    BK              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    BACKWARD        reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    RIGHT           reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    RT              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    LEFT            reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    LT              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    PRINT           reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    SETXY           reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    IF              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    WHILE           reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    TO              reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    ARGUMENT        reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    $end            reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    END             reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+    ELSE            reduce using rule 17 (logo_expr -> CLEARSCREEN .)
+
+
+state 17
+
+    (18) logo_expr -> CS .
+
+    NUMBER          reduce using rule 18 (logo_expr -> CS .)
+    PENUP           reduce using rule 18 (logo_expr -> CS .)
+    PU              reduce using rule 18 (logo_expr -> CS .)
+    PENDOWN         reduce using rule 18 (logo_expr -> CS .)
+    PD              reduce using rule 18 (logo_expr -> CS .)
+    WIPECLEAN       reduce using rule 18 (logo_expr -> CS .)
+    WC              reduce using rule 18 (logo_expr -> CS .)
+    CLEARSCREEN     reduce using rule 18 (logo_expr -> CS .)
+    CS              reduce using rule 18 (logo_expr -> CS .)
+    HOME            reduce using rule 18 (logo_expr -> CS .)
+    XCOR            reduce using rule 18 (logo_expr -> CS .)
+    YCOR            reduce using rule 18 (logo_expr -> CS .)
+    HEADING         reduce using rule 18 (logo_expr -> CS .)
+    RANDOM          reduce using rule 18 (logo_expr -> CS .)
+    TYPEIN          reduce using rule 18 (logo_expr -> CS .)
+    FORWARD         reduce using rule 18 (logo_expr -> CS .)
+    FO              reduce using rule 18 (logo_expr -> CS .)
+    BK              reduce using rule 18 (logo_expr -> CS .)
+    BACKWARD        reduce using rule 18 (logo_expr -> CS .)
+    RIGHT           reduce using rule 18 (logo_expr -> CS .)
+    RT              reduce using rule 18 (logo_expr -> CS .)
+    LEFT            reduce using rule 18 (logo_expr -> CS .)
+    LT              reduce using rule 18 (logo_expr -> CS .)
+    PRINT           reduce using rule 18 (logo_expr -> CS .)
+    SETXY           reduce using rule 18 (logo_expr -> CS .)
+    IF              reduce using rule 18 (logo_expr -> CS .)
+    WHILE           reduce using rule 18 (logo_expr -> CS .)
+    TO              reduce using rule 18 (logo_expr -> CS .)
+    ARGUMENT        reduce using rule 18 (logo_expr -> CS .)
+    $end            reduce using rule 18 (logo_expr -> CS .)
+    END             reduce using rule 18 (logo_expr -> CS .)
+    ELSE            reduce using rule 18 (logo_expr -> CS .)
+
+
+state 18
+
+    (19) logo_expr -> HOME .
+
+    NUMBER          reduce using rule 19 (logo_expr -> HOME .)
+    PENUP           reduce using rule 19 (logo_expr -> HOME .)
+    PU              reduce using rule 19 (logo_expr -> HOME .)
+    PENDOWN         reduce using rule 19 (logo_expr -> HOME .)
+    PD              reduce using rule 19 (logo_expr -> HOME .)
+    WIPECLEAN       reduce using rule 19 (logo_expr -> HOME .)
+    WC              reduce using rule 19 (logo_expr -> HOME .)
+    CLEARSCREEN     reduce using rule 19 (logo_expr -> HOME .)
+    CS              reduce using rule 19 (logo_expr -> HOME .)
+    HOME            reduce using rule 19 (logo_expr -> HOME .)
+    XCOR            reduce using rule 19 (logo_expr -> HOME .)
+    YCOR            reduce using rule 19 (logo_expr -> HOME .)
+    HEADING         reduce using rule 19 (logo_expr -> HOME .)
+    RANDOM          reduce using rule 19 (logo_expr -> HOME .)
+    TYPEIN          reduce using rule 19 (logo_expr -> HOME .)
+    FORWARD         reduce using rule 19 (logo_expr -> HOME .)
+    FO              reduce using rule 19 (logo_expr -> HOME .)
+    BK              reduce using rule 19 (logo_expr -> HOME .)
+    BACKWARD        reduce using rule 19 (logo_expr -> HOME .)
+    RIGHT           reduce using rule 19 (logo_expr -> HOME .)
+    RT              reduce using rule 19 (logo_expr -> HOME .)
+    LEFT            reduce using rule 19 (logo_expr -> HOME .)
+    LT              reduce using rule 19 (logo_expr -> HOME .)
+    PRINT           reduce using rule 19 (logo_expr -> HOME .)
+    SETXY           reduce using rule 19 (logo_expr -> HOME .)
+    IF              reduce using rule 19 (logo_expr -> HOME .)
+    WHILE           reduce using rule 19 (logo_expr -> HOME .)
+    TO              reduce using rule 19 (logo_expr -> HOME .)
+    ARGUMENT        reduce using rule 19 (logo_expr -> HOME .)
+    $end            reduce using rule 19 (logo_expr -> HOME .)
+    END             reduce using rule 19 (logo_expr -> HOME .)
+    ELSE            reduce using rule 19 (logo_expr -> HOME .)
+
+
+state 19
+
+    (20) logo_expr -> XCOR .
+
+    NUMBER          reduce using rule 20 (logo_expr -> XCOR .)
+    PENUP           reduce using rule 20 (logo_expr -> XCOR .)
+    PU              reduce using rule 20 (logo_expr -> XCOR .)
+    PENDOWN         reduce using rule 20 (logo_expr -> XCOR .)
+    PD              reduce using rule 20 (logo_expr -> XCOR .)
+    WIPECLEAN       reduce using rule 20 (logo_expr -> XCOR .)
+    WC              reduce using rule 20 (logo_expr -> XCOR .)
+    CLEARSCREEN     reduce using rule 20 (logo_expr -> XCOR .)
+    CS              reduce using rule 20 (logo_expr -> XCOR .)
+    HOME            reduce using rule 20 (logo_expr -> XCOR .)
+    XCOR            reduce using rule 20 (logo_expr -> XCOR .)
+    YCOR            reduce using rule 20 (logo_expr -> XCOR .)
+    HEADING         reduce using rule 20 (logo_expr -> XCOR .)
+    RANDOM          reduce using rule 20 (logo_expr -> XCOR .)
+    TYPEIN          reduce using rule 20 (logo_expr -> XCOR .)
+    FORWARD         reduce using rule 20 (logo_expr -> XCOR .)
+    FO              reduce using rule 20 (logo_expr -> XCOR .)
+    BK              reduce using rule 20 (logo_expr -> XCOR .)
+    BACKWARD        reduce using rule 20 (logo_expr -> XCOR .)
+    RIGHT           reduce using rule 20 (logo_expr -> XCOR .)
+    RT              reduce using rule 20 (logo_expr -> XCOR .)
+    LEFT            reduce using rule 20 (logo_expr -> XCOR .)
+    LT              reduce using rule 20 (logo_expr -> XCOR .)
+    PRINT           reduce using rule 20 (logo_expr -> XCOR .)
+    SETXY           reduce using rule 20 (logo_expr -> XCOR .)
+    IF              reduce using rule 20 (logo_expr -> XCOR .)
+    WHILE           reduce using rule 20 (logo_expr -> XCOR .)
+    TO              reduce using rule 20 (logo_expr -> XCOR .)
+    ARGUMENT        reduce using rule 20 (logo_expr -> XCOR .)
+    $end            reduce using rule 20 (logo_expr -> XCOR .)
+    END             reduce using rule 20 (logo_expr -> XCOR .)
+    ELSE            reduce using rule 20 (logo_expr -> XCOR .)
+
+
+state 20
+
+    (21) logo_expr -> YCOR .
+
+    NUMBER          reduce using rule 21 (logo_expr -> YCOR .)
+    PENUP           reduce using rule 21 (logo_expr -> YCOR .)
+    PU              reduce using rule 21 (logo_expr -> YCOR .)
+    PENDOWN         reduce using rule 21 (logo_expr -> YCOR .)
+    PD              reduce using rule 21 (logo_expr -> YCOR .)
+    WIPECLEAN       reduce using rule 21 (logo_expr -> YCOR .)
+    WC              reduce using rule 21 (logo_expr -> YCOR .)
+    CLEARSCREEN     reduce using rule 21 (logo_expr -> YCOR .)
+    CS              reduce using rule 21 (logo_expr -> YCOR .)
+    HOME            reduce using rule 21 (logo_expr -> YCOR .)
+    XCOR            reduce using rule 21 (logo_expr -> YCOR .)
+    YCOR            reduce using rule 21 (logo_expr -> YCOR .)
+    HEADING         reduce using rule 21 (logo_expr -> YCOR .)
+    RANDOM          reduce using rule 21 (logo_expr -> YCOR .)
+    TYPEIN          reduce using rule 21 (logo_expr -> YCOR .)
+    FORWARD         reduce using rule 21 (logo_expr -> YCOR .)
+    FO              reduce using rule 21 (logo_expr -> YCOR .)
+    BK              reduce using rule 21 (logo_expr -> YCOR .)
+    BACKWARD        reduce using rule 21 (logo_expr -> YCOR .)
+    RIGHT           reduce using rule 21 (logo_expr -> YCOR .)
+    RT              reduce using rule 21 (logo_expr -> YCOR .)
+    LEFT            reduce using rule 21 (logo_expr -> YCOR .)
+    LT              reduce using rule 21 (logo_expr -> YCOR .)
+    PRINT           reduce using rule 21 (logo_expr -> YCOR .)
+    SETXY           reduce using rule 21 (logo_expr -> YCOR .)
+    IF              reduce using rule 21 (logo_expr -> YCOR .)
+    WHILE           reduce using rule 21 (logo_expr -> YCOR .)
+    TO              reduce using rule 21 (logo_expr -> YCOR .)
+    ARGUMENT        reduce using rule 21 (logo_expr -> YCOR .)
+    $end            reduce using rule 21 (logo_expr -> YCOR .)
+    END             reduce using rule 21 (logo_expr -> YCOR .)
+    ELSE            reduce using rule 21 (logo_expr -> YCOR .)
+
+
+state 21
+
+    (22) logo_expr -> HEADING .
+
+    NUMBER          reduce using rule 22 (logo_expr -> HEADING .)
+    PENUP           reduce using rule 22 (logo_expr -> HEADING .)
+    PU              reduce using rule 22 (logo_expr -> HEADING .)
+    PENDOWN         reduce using rule 22 (logo_expr -> HEADING .)
+    PD              reduce using rule 22 (logo_expr -> HEADING .)
+    WIPECLEAN       reduce using rule 22 (logo_expr -> HEADING .)
+    WC              reduce using rule 22 (logo_expr -> HEADING .)
+    CLEARSCREEN     reduce using rule 22 (logo_expr -> HEADING .)
+    CS              reduce using rule 22 (logo_expr -> HEADING .)
+    HOME            reduce using rule 22 (logo_expr -> HEADING .)
+    XCOR            reduce using rule 22 (logo_expr -> HEADING .)
+    YCOR            reduce using rule 22 (logo_expr -> HEADING .)
+    HEADING         reduce using rule 22 (logo_expr -> HEADING .)
+    RANDOM          reduce using rule 22 (logo_expr -> HEADING .)
+    TYPEIN          reduce using rule 22 (logo_expr -> HEADING .)
+    FORWARD         reduce using rule 22 (logo_expr -> HEADING .)
+    FO              reduce using rule 22 (logo_expr -> HEADING .)
+    BK              reduce using rule 22 (logo_expr -> HEADING .)
+    BACKWARD        reduce using rule 22 (logo_expr -> HEADING .)
+    RIGHT           reduce using rule 22 (logo_expr -> HEADING .)
+    RT              reduce using rule 22 (logo_expr -> HEADING .)
+    LEFT            reduce using rule 22 (logo_expr -> HEADING .)
+    LT              reduce using rule 22 (logo_expr -> HEADING .)
+    PRINT           reduce using rule 22 (logo_expr -> HEADING .)
+    SETXY           reduce using rule 22 (logo_expr -> HEADING .)
+    IF              reduce using rule 22 (logo_expr -> HEADING .)
+    WHILE           reduce using rule 22 (logo_expr -> HEADING .)
+    TO              reduce using rule 22 (logo_expr -> HEADING .)
+    ARGUMENT        reduce using rule 22 (logo_expr -> HEADING .)
+    $end            reduce using rule 22 (logo_expr -> HEADING .)
+    END             reduce using rule 22 (logo_expr -> HEADING .)
+    ELSE            reduce using rule 22 (logo_expr -> HEADING .)
+
+
+state 22
+
+    (23) logo_expr -> RANDOM .
+
+    NUMBER          reduce using rule 23 (logo_expr -> RANDOM .)
+    PENUP           reduce using rule 23 (logo_expr -> RANDOM .)
+    PU              reduce using rule 23 (logo_expr -> RANDOM .)
+    PENDOWN         reduce using rule 23 (logo_expr -> RANDOM .)
+    PD              reduce using rule 23 (logo_expr -> RANDOM .)
+    WIPECLEAN       reduce using rule 23 (logo_expr -> RANDOM .)
+    WC              reduce using rule 23 (logo_expr -> RANDOM .)
+    CLEARSCREEN     reduce using rule 23 (logo_expr -> RANDOM .)
+    CS              reduce using rule 23 (logo_expr -> RANDOM .)
+    HOME            reduce using rule 23 (logo_expr -> RANDOM .)
+    XCOR            reduce using rule 23 (logo_expr -> RANDOM .)
+    YCOR            reduce using rule 23 (logo_expr -> RANDOM .)
+    HEADING         reduce using rule 23 (logo_expr -> RANDOM .)
+    RANDOM          reduce using rule 23 (logo_expr -> RANDOM .)
+    TYPEIN          reduce using rule 23 (logo_expr -> RANDOM .)
+    FORWARD         reduce using rule 23 (logo_expr -> RANDOM .)
+    FO              reduce using rule 23 (logo_expr -> RANDOM .)
+    BK              reduce using rule 23 (logo_expr -> RANDOM .)
+    BACKWARD        reduce using rule 23 (logo_expr -> RANDOM .)
+    RIGHT           reduce using rule 23 (logo_expr -> RANDOM .)
+    RT              reduce using rule 23 (logo_expr -> RANDOM .)
+    LEFT            reduce using rule 23 (logo_expr -> RANDOM .)
+    LT              reduce using rule 23 (logo_expr -> RANDOM .)
+    PRINT           reduce using rule 23 (logo_expr -> RANDOM .)
+    SETXY           reduce using rule 23 (logo_expr -> RANDOM .)
+    IF              reduce using rule 23 (logo_expr -> RANDOM .)
+    WHILE           reduce using rule 23 (logo_expr -> RANDOM .)
+    TO              reduce using rule 23 (logo_expr -> RANDOM .)
+    ARGUMENT        reduce using rule 23 (logo_expr -> RANDOM .)
+    $end            reduce using rule 23 (logo_expr -> RANDOM .)
+    END             reduce using rule 23 (logo_expr -> RANDOM .)
+    ELSE            reduce using rule 23 (logo_expr -> RANDOM .)
+
+
+state 23
+
+    (24) logo_expr -> TYPEIN .
+
+    NUMBER          reduce using rule 24 (logo_expr -> TYPEIN .)
+    PENUP           reduce using rule 24 (logo_expr -> TYPEIN .)
+    PU              reduce using rule 24 (logo_expr -> TYPEIN .)
+    PENDOWN         reduce using rule 24 (logo_expr -> TYPEIN .)
+    PD              reduce using rule 24 (logo_expr -> TYPEIN .)
+    WIPECLEAN       reduce using rule 24 (logo_expr -> TYPEIN .)
+    WC              reduce using rule 24 (logo_expr -> TYPEIN .)
+    CLEARSCREEN     reduce using rule 24 (logo_expr -> TYPEIN .)
+    CS              reduce using rule 24 (logo_expr -> TYPEIN .)
+    HOME            reduce using rule 24 (logo_expr -> TYPEIN .)
+    XCOR            reduce using rule 24 (logo_expr -> TYPEIN .)
+    YCOR            reduce using rule 24 (logo_expr -> TYPEIN .)
+    HEADING         reduce using rule 24 (logo_expr -> TYPEIN .)
+    RANDOM          reduce using rule 24 (logo_expr -> TYPEIN .)
+    TYPEIN          reduce using rule 24 (logo_expr -> TYPEIN .)
+    FORWARD         reduce using rule 24 (logo_expr -> TYPEIN .)
+    FO              reduce using rule 24 (logo_expr -> TYPEIN .)
+    BK              reduce using rule 24 (logo_expr -> TYPEIN .)
+    BACKWARD        reduce using rule 24 (logo_expr -> TYPEIN .)
+    RIGHT           reduce using rule 24 (logo_expr -> TYPEIN .)
+    RT              reduce using rule 24 (logo_expr -> TYPEIN .)
+    LEFT            reduce using rule 24 (logo_expr -> TYPEIN .)
+    LT              reduce using rule 24 (logo_expr -> TYPEIN .)
+    PRINT           reduce using rule 24 (logo_expr -> TYPEIN .)
+    SETXY           reduce using rule 24 (logo_expr -> TYPEIN .)
+    IF              reduce using rule 24 (logo_expr -> TYPEIN .)
+    WHILE           reduce using rule 24 (logo_expr -> TYPEIN .)
+    TO              reduce using rule 24 (logo_expr -> TYPEIN .)
+    ARGUMENT        reduce using rule 24 (logo_expr -> TYPEIN .)
+    $end            reduce using rule 24 (logo_expr -> TYPEIN .)
+    END             reduce using rule 24 (logo_expr -> TYPEIN .)
+    ELSE            reduce using rule 24 (logo_expr -> TYPEIN .)
+
+
+state 24
+
+    (25) logo_expr -> FORWARD . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 42
+
+state 25
+
+    (26) logo_expr -> FO . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 43
+
+state 26
+
+    (27) logo_expr -> BK . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 44
+
+state 27
+
+    (28) logo_expr -> BACKWARD . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 45
+
+state 28
+
+    (29) logo_expr -> RIGHT . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 46
+
+state 29
+
+    (30) logo_expr -> RT . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 47
+
+state 30
+
+    (31) logo_expr -> LEFT . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 48
+
+state 31
+
+    (32) logo_expr -> LT . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 49
+
+state 32
+
+    (33) logo_expr -> PRINT . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 50
+
+state 33
+
+    (34) logo_expr -> SETXY . value_expr value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 51
+
+state 34
+
+    (39) if_stmt -> IF . bool_expr THEN expression END
+    (40) if_stmt -> IF . bool_expr THEN expression ELSE expression END
+    (41) bool_expr -> . value_expr EQUALS value_expr
+    (42) bool_expr -> . value_expr GREATER value_expr
+    (43) bool_expr -> . value_expr LOWER value_expr
+    (44) bool_expr -> . value_expr GREATEQ value_expr
+    (45) bool_expr -> . value_expr LOWEQ value_expr
+    (46) bool_expr -> . bool_expr bool_expr_operator bool_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    bool_expr                      shift and go to state 52
+    value_expr                     shift and go to state 53
+
+state 35
+
+    (36) loop_stmt -> WHILE . bool_expr THEN expression END
+    (41) bool_expr -> . value_expr EQUALS value_expr
+    (42) bool_expr -> . value_expr GREATER value_expr
+    (43) bool_expr -> . value_expr LOWER value_expr
+    (44) bool_expr -> . value_expr GREATEQ value_expr
+    (45) bool_expr -> . value_expr LOWEQ value_expr
+    (46) bool_expr -> . bool_expr bool_expr_operator bool_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    bool_expr                      shift and go to state 54
+    value_expr                     shift and go to state 53
+
+state 36
+
+    (47) assign_expr -> TO . IDENTIFIER params expression END
+
+    IDENTIFIER      shift and go to state 55
+
+
+state 37
+
+    (48) params -> ARGUMENT .
+
+    ARGUMENT        reduce using rule 48 (params -> ARGUMENT .)
+    NUMBER          reduce using rule 48 (params -> ARGUMENT .)
+    PENUP           reduce using rule 48 (params -> ARGUMENT .)
+    PU              reduce using rule 48 (params -> ARGUMENT .)
+    PENDOWN         reduce using rule 48 (params -> ARGUMENT .)
+    PD              reduce using rule 48 (params -> ARGUMENT .)
+    WIPECLEAN       reduce using rule 48 (params -> ARGUMENT .)
+    WC              reduce using rule 48 (params -> ARGUMENT .)
+    CLEARSCREEN     reduce using rule 48 (params -> ARGUMENT .)
+    CS              reduce using rule 48 (params -> ARGUMENT .)
+    HOME            reduce using rule 48 (params -> ARGUMENT .)
+    XCOR            reduce using rule 48 (params -> ARGUMENT .)
+    YCOR            reduce using rule 48 (params -> ARGUMENT .)
+    HEADING         reduce using rule 48 (params -> ARGUMENT .)
+    RANDOM          reduce using rule 48 (params -> ARGUMENT .)
+    TYPEIN          reduce using rule 48 (params -> ARGUMENT .)
+    FORWARD         reduce using rule 48 (params -> ARGUMENT .)
+    FO              reduce using rule 48 (params -> ARGUMENT .)
+    BK              reduce using rule 48 (params -> ARGUMENT .)
+    BACKWARD        reduce using rule 48 (params -> ARGUMENT .)
+    RIGHT           reduce using rule 48 (params -> ARGUMENT .)
+    RT              reduce using rule 48 (params -> ARGUMENT .)
+    LEFT            reduce using rule 48 (params -> ARGUMENT .)
+    LT              reduce using rule 48 (params -> ARGUMENT .)
+    PRINT           reduce using rule 48 (params -> ARGUMENT .)
+    SETXY           reduce using rule 48 (params -> ARGUMENT .)
+    IF              reduce using rule 48 (params -> ARGUMENT .)
+    WHILE           reduce using rule 48 (params -> ARGUMENT .)
+    TO              reduce using rule 48 (params -> ARGUMENT .)
+    $end            reduce using rule 48 (params -> ARGUMENT .)
+    END             reduce using rule 48 (params -> ARGUMENT .)
+    ELSE            reduce using rule 48 (params -> ARGUMENT .)
+
+
+state 38
+
+    (2) other_expression -> expression . other_expression
+    (2) other_expression -> . expression other_expression
+    (3) other_expression -> . empty
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (10) empty -> .
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    $end            reduce using rule 10 (empty -> .)
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+    ARGUMENT        shift and go to state 37
+
+    expression                     shift and go to state 38
+    other_expression               shift and go to state 56
+    empty                          shift and go to state 40
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+    params                         shift and go to state 8
+
+state 39
+
+    (1) program -> expression other_expression .
+
+    $end            reduce using rule 1 (program -> expression other_expression .)
+
+
+state 40
+
+    (3) other_expression -> empty .
+
+    $end            reduce using rule 3 (other_expression -> empty .)
+
+
+state 41
+
+    (49) params -> params ARGUMENT .
+
+    ARGUMENT        reduce using rule 49 (params -> params ARGUMENT .)
+    NUMBER          reduce using rule 49 (params -> params ARGUMENT .)
+    PENUP           reduce using rule 49 (params -> params ARGUMENT .)
+    PU              reduce using rule 49 (params -> params ARGUMENT .)
+    PENDOWN         reduce using rule 49 (params -> params ARGUMENT .)
+    PD              reduce using rule 49 (params -> params ARGUMENT .)
+    WIPECLEAN       reduce using rule 49 (params -> params ARGUMENT .)
+    WC              reduce using rule 49 (params -> params ARGUMENT .)
+    CLEARSCREEN     reduce using rule 49 (params -> params ARGUMENT .)
+    CS              reduce using rule 49 (params -> params ARGUMENT .)
+    HOME            reduce using rule 49 (params -> params ARGUMENT .)
+    XCOR            reduce using rule 49 (params -> params ARGUMENT .)
+    YCOR            reduce using rule 49 (params -> params ARGUMENT .)
+    HEADING         reduce using rule 49 (params -> params ARGUMENT .)
+    RANDOM          reduce using rule 49 (params -> params ARGUMENT .)
+    TYPEIN          reduce using rule 49 (params -> params ARGUMENT .)
+    FORWARD         reduce using rule 49 (params -> params ARGUMENT .)
+    FO              reduce using rule 49 (params -> params ARGUMENT .)
+    BK              reduce using rule 49 (params -> params ARGUMENT .)
+    BACKWARD        reduce using rule 49 (params -> params ARGUMENT .)
+    RIGHT           reduce using rule 49 (params -> params ARGUMENT .)
+    RT              reduce using rule 49 (params -> params ARGUMENT .)
+    LEFT            reduce using rule 49 (params -> params ARGUMENT .)
+    LT              reduce using rule 49 (params -> params ARGUMENT .)
+    PRINT           reduce using rule 49 (params -> params ARGUMENT .)
+    SETXY           reduce using rule 49 (params -> params ARGUMENT .)
+    IF              reduce using rule 49 (params -> params ARGUMENT .)
+    WHILE           reduce using rule 49 (params -> params ARGUMENT .)
+    TO              reduce using rule 49 (params -> params ARGUMENT .)
+    $end            reduce using rule 49 (params -> params ARGUMENT .)
+    END             reduce using rule 49 (params -> params ARGUMENT .)
+    ELSE            reduce using rule 49 (params -> params ARGUMENT .)
+
+
+state 42
+
+    (25) logo_expr -> FORWARD value_expr .
+
+    NUMBER          reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    PENUP           reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    PU              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    PENDOWN         reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    PD              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    WIPECLEAN       reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    WC              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    CLEARSCREEN     reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    CS              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    HOME            reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    XCOR            reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    YCOR            reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    HEADING         reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    RANDOM          reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    TYPEIN          reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    FORWARD         reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    FO              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    BK              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    BACKWARD        reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    RIGHT           reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    RT              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    LEFT            reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    LT              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    PRINT           reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    SETXY           reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    IF              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    WHILE           reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    TO              reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    ARGUMENT        reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    $end            reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    END             reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+    ELSE            reduce using rule 25 (logo_expr -> FORWARD value_expr .)
+
+
+state 43
+
+    (26) logo_expr -> FO value_expr .
+
+    NUMBER          reduce using rule 26 (logo_expr -> FO value_expr .)
+    PENUP           reduce using rule 26 (logo_expr -> FO value_expr .)
+    PU              reduce using rule 26 (logo_expr -> FO value_expr .)
+    PENDOWN         reduce using rule 26 (logo_expr -> FO value_expr .)
+    PD              reduce using rule 26 (logo_expr -> FO value_expr .)
+    WIPECLEAN       reduce using rule 26 (logo_expr -> FO value_expr .)
+    WC              reduce using rule 26 (logo_expr -> FO value_expr .)
+    CLEARSCREEN     reduce using rule 26 (logo_expr -> FO value_expr .)
+    CS              reduce using rule 26 (logo_expr -> FO value_expr .)
+    HOME            reduce using rule 26 (logo_expr -> FO value_expr .)
+    XCOR            reduce using rule 26 (logo_expr -> FO value_expr .)
+    YCOR            reduce using rule 26 (logo_expr -> FO value_expr .)
+    HEADING         reduce using rule 26 (logo_expr -> FO value_expr .)
+    RANDOM          reduce using rule 26 (logo_expr -> FO value_expr .)
+    TYPEIN          reduce using rule 26 (logo_expr -> FO value_expr .)
+    FORWARD         reduce using rule 26 (logo_expr -> FO value_expr .)
+    FO              reduce using rule 26 (logo_expr -> FO value_expr .)
+    BK              reduce using rule 26 (logo_expr -> FO value_expr .)
+    BACKWARD        reduce using rule 26 (logo_expr -> FO value_expr .)
+    RIGHT           reduce using rule 26 (logo_expr -> FO value_expr .)
+    RT              reduce using rule 26 (logo_expr -> FO value_expr .)
+    LEFT            reduce using rule 26 (logo_expr -> FO value_expr .)
+    LT              reduce using rule 26 (logo_expr -> FO value_expr .)
+    PRINT           reduce using rule 26 (logo_expr -> FO value_expr .)
+    SETXY           reduce using rule 26 (logo_expr -> FO value_expr .)
+    IF              reduce using rule 26 (logo_expr -> FO value_expr .)
+    WHILE           reduce using rule 26 (logo_expr -> FO value_expr .)
+    TO              reduce using rule 26 (logo_expr -> FO value_expr .)
+    ARGUMENT        reduce using rule 26 (logo_expr -> FO value_expr .)
+    $end            reduce using rule 26 (logo_expr -> FO value_expr .)
+    END             reduce using rule 26 (logo_expr -> FO value_expr .)
+    ELSE            reduce using rule 26 (logo_expr -> FO value_expr .)
+
+
+state 44
+
+    (27) logo_expr -> BK value_expr .
+
+    NUMBER          reduce using rule 27 (logo_expr -> BK value_expr .)
+    PENUP           reduce using rule 27 (logo_expr -> BK value_expr .)
+    PU              reduce using rule 27 (logo_expr -> BK value_expr .)
+    PENDOWN         reduce using rule 27 (logo_expr -> BK value_expr .)
+    PD              reduce using rule 27 (logo_expr -> BK value_expr .)
+    WIPECLEAN       reduce using rule 27 (logo_expr -> BK value_expr .)
+    WC              reduce using rule 27 (logo_expr -> BK value_expr .)
+    CLEARSCREEN     reduce using rule 27 (logo_expr -> BK value_expr .)
+    CS              reduce using rule 27 (logo_expr -> BK value_expr .)
+    HOME            reduce using rule 27 (logo_expr -> BK value_expr .)
+    XCOR            reduce using rule 27 (logo_expr -> BK value_expr .)
+    YCOR            reduce using rule 27 (logo_expr -> BK value_expr .)
+    HEADING         reduce using rule 27 (logo_expr -> BK value_expr .)
+    RANDOM          reduce using rule 27 (logo_expr -> BK value_expr .)
+    TYPEIN          reduce using rule 27 (logo_expr -> BK value_expr .)
+    FORWARD         reduce using rule 27 (logo_expr -> BK value_expr .)
+    FO              reduce using rule 27 (logo_expr -> BK value_expr .)
+    BK              reduce using rule 27 (logo_expr -> BK value_expr .)
+    BACKWARD        reduce using rule 27 (logo_expr -> BK value_expr .)
+    RIGHT           reduce using rule 27 (logo_expr -> BK value_expr .)
+    RT              reduce using rule 27 (logo_expr -> BK value_expr .)
+    LEFT            reduce using rule 27 (logo_expr -> BK value_expr .)
+    LT              reduce using rule 27 (logo_expr -> BK value_expr .)
+    PRINT           reduce using rule 27 (logo_expr -> BK value_expr .)
+    SETXY           reduce using rule 27 (logo_expr -> BK value_expr .)
+    IF              reduce using rule 27 (logo_expr -> BK value_expr .)
+    WHILE           reduce using rule 27 (logo_expr -> BK value_expr .)
+    TO              reduce using rule 27 (logo_expr -> BK value_expr .)
+    ARGUMENT        reduce using rule 27 (logo_expr -> BK value_expr .)
+    $end            reduce using rule 27 (logo_expr -> BK value_expr .)
+    END             reduce using rule 27 (logo_expr -> BK value_expr .)
+    ELSE            reduce using rule 27 (logo_expr -> BK value_expr .)
+
+
+state 45
+
+    (28) logo_expr -> BACKWARD value_expr .
+
+    NUMBER          reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    PENUP           reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    PU              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    PENDOWN         reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    PD              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    WIPECLEAN       reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    WC              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    CLEARSCREEN     reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    CS              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    HOME            reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    XCOR            reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    YCOR            reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    HEADING         reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    RANDOM          reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    TYPEIN          reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    FORWARD         reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    FO              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    BK              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    BACKWARD        reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    RIGHT           reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    RT              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    LEFT            reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    LT              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    PRINT           reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    SETXY           reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    IF              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    WHILE           reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    TO              reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    ARGUMENT        reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    $end            reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    END             reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+    ELSE            reduce using rule 28 (logo_expr -> BACKWARD value_expr .)
+
+
+state 46
+
+    (29) logo_expr -> RIGHT value_expr .
+
+    NUMBER          reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    PENUP           reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    PU              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    PENDOWN         reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    PD              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    WIPECLEAN       reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    WC              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    CLEARSCREEN     reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    CS              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    HOME            reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    XCOR            reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    YCOR            reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    HEADING         reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    RANDOM          reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    TYPEIN          reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    FORWARD         reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    FO              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    BK              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    BACKWARD        reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    RIGHT           reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    RT              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    LEFT            reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    LT              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    PRINT           reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    SETXY           reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    IF              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    WHILE           reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    TO              reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    ARGUMENT        reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    $end            reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    END             reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+    ELSE            reduce using rule 29 (logo_expr -> RIGHT value_expr .)
+
+
+state 47
+
+    (30) logo_expr -> RT value_expr .
+
+    NUMBER          reduce using rule 30 (logo_expr -> RT value_expr .)
+    PENUP           reduce using rule 30 (logo_expr -> RT value_expr .)
+    PU              reduce using rule 30 (logo_expr -> RT value_expr .)
+    PENDOWN         reduce using rule 30 (logo_expr -> RT value_expr .)
+    PD              reduce using rule 30 (logo_expr -> RT value_expr .)
+    WIPECLEAN       reduce using rule 30 (logo_expr -> RT value_expr .)
+    WC              reduce using rule 30 (logo_expr -> RT value_expr .)
+    CLEARSCREEN     reduce using rule 30 (logo_expr -> RT value_expr .)
+    CS              reduce using rule 30 (logo_expr -> RT value_expr .)
+    HOME            reduce using rule 30 (logo_expr -> RT value_expr .)
+    XCOR            reduce using rule 30 (logo_expr -> RT value_expr .)
+    YCOR            reduce using rule 30 (logo_expr -> RT value_expr .)
+    HEADING         reduce using rule 30 (logo_expr -> RT value_expr .)
+    RANDOM          reduce using rule 30 (logo_expr -> RT value_expr .)
+    TYPEIN          reduce using rule 30 (logo_expr -> RT value_expr .)
+    FORWARD         reduce using rule 30 (logo_expr -> RT value_expr .)
+    FO              reduce using rule 30 (logo_expr -> RT value_expr .)
+    BK              reduce using rule 30 (logo_expr -> RT value_expr .)
+    BACKWARD        reduce using rule 30 (logo_expr -> RT value_expr .)
+    RIGHT           reduce using rule 30 (logo_expr -> RT value_expr .)
+    RT              reduce using rule 30 (logo_expr -> RT value_expr .)
+    LEFT            reduce using rule 30 (logo_expr -> RT value_expr .)
+    LT              reduce using rule 30 (logo_expr -> RT value_expr .)
+    PRINT           reduce using rule 30 (logo_expr -> RT value_expr .)
+    SETXY           reduce using rule 30 (logo_expr -> RT value_expr .)
+    IF              reduce using rule 30 (logo_expr -> RT value_expr .)
+    WHILE           reduce using rule 30 (logo_expr -> RT value_expr .)
+    TO              reduce using rule 30 (logo_expr -> RT value_expr .)
+    ARGUMENT        reduce using rule 30 (logo_expr -> RT value_expr .)
+    $end            reduce using rule 30 (logo_expr -> RT value_expr .)
+    END             reduce using rule 30 (logo_expr -> RT value_expr .)
+    ELSE            reduce using rule 30 (logo_expr -> RT value_expr .)
+
+
+state 48
+
+    (31) logo_expr -> LEFT value_expr .
+
+    NUMBER          reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    PENUP           reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    PU              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    PENDOWN         reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    PD              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    WIPECLEAN       reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    WC              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    CLEARSCREEN     reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    CS              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    HOME            reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    XCOR            reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    YCOR            reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    HEADING         reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    RANDOM          reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    TYPEIN          reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    FORWARD         reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    FO              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    BK              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    BACKWARD        reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    RIGHT           reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    RT              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    LEFT            reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    LT              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    PRINT           reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    SETXY           reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    IF              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    WHILE           reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    TO              reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    ARGUMENT        reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    $end            reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    END             reduce using rule 31 (logo_expr -> LEFT value_expr .)
+    ELSE            reduce using rule 31 (logo_expr -> LEFT value_expr .)
+
+
+state 49
+
+    (32) logo_expr -> LT value_expr .
+
+    NUMBER          reduce using rule 32 (logo_expr -> LT value_expr .)
+    PENUP           reduce using rule 32 (logo_expr -> LT value_expr .)
+    PU              reduce using rule 32 (logo_expr -> LT value_expr .)
+    PENDOWN         reduce using rule 32 (logo_expr -> LT value_expr .)
+    PD              reduce using rule 32 (logo_expr -> LT value_expr .)
+    WIPECLEAN       reduce using rule 32 (logo_expr -> LT value_expr .)
+    WC              reduce using rule 32 (logo_expr -> LT value_expr .)
+    CLEARSCREEN     reduce using rule 32 (logo_expr -> LT value_expr .)
+    CS              reduce using rule 32 (logo_expr -> LT value_expr .)
+    HOME            reduce using rule 32 (logo_expr -> LT value_expr .)
+    XCOR            reduce using rule 32 (logo_expr -> LT value_expr .)
+    YCOR            reduce using rule 32 (logo_expr -> LT value_expr .)
+    HEADING         reduce using rule 32 (logo_expr -> LT value_expr .)
+    RANDOM          reduce using rule 32 (logo_expr -> LT value_expr .)
+    TYPEIN          reduce using rule 32 (logo_expr -> LT value_expr .)
+    FORWARD         reduce using rule 32 (logo_expr -> LT value_expr .)
+    FO              reduce using rule 32 (logo_expr -> LT value_expr .)
+    BK              reduce using rule 32 (logo_expr -> LT value_expr .)
+    BACKWARD        reduce using rule 32 (logo_expr -> LT value_expr .)
+    RIGHT           reduce using rule 32 (logo_expr -> LT value_expr .)
+    RT              reduce using rule 32 (logo_expr -> LT value_expr .)
+    LEFT            reduce using rule 32 (logo_expr -> LT value_expr .)
+    LT              reduce using rule 32 (logo_expr -> LT value_expr .)
+    PRINT           reduce using rule 32 (logo_expr -> LT value_expr .)
+    SETXY           reduce using rule 32 (logo_expr -> LT value_expr .)
+    IF              reduce using rule 32 (logo_expr -> LT value_expr .)
+    WHILE           reduce using rule 32 (logo_expr -> LT value_expr .)
+    TO              reduce using rule 32 (logo_expr -> LT value_expr .)
+    ARGUMENT        reduce using rule 32 (logo_expr -> LT value_expr .)
+    $end            reduce using rule 32 (logo_expr -> LT value_expr .)
+    END             reduce using rule 32 (logo_expr -> LT value_expr .)
+    ELSE            reduce using rule 32 (logo_expr -> LT value_expr .)
+
+
+state 50
+
+    (33) logo_expr -> PRINT value_expr .
+
+    NUMBER          reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    PENUP           reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    PU              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    PENDOWN         reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    PD              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    WIPECLEAN       reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    WC              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    CLEARSCREEN     reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    CS              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    HOME            reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    XCOR            reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    YCOR            reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    HEADING         reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    RANDOM          reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    TYPEIN          reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    FORWARD         reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    FO              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    BK              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    BACKWARD        reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    RIGHT           reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    RT              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    LEFT            reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    LT              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    PRINT           reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    SETXY           reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    IF              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    WHILE           reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    TO              reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    ARGUMENT        reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    $end            reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    END             reduce using rule 33 (logo_expr -> PRINT value_expr .)
+    ELSE            reduce using rule 33 (logo_expr -> PRINT value_expr .)
+
+
+state 51
+
+    (34) logo_expr -> SETXY value_expr . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 57
+
+state 52
+
+    (39) if_stmt -> IF bool_expr . THEN expression END
+    (40) if_stmt -> IF bool_expr . THEN expression ELSE expression END
+    (46) bool_expr -> bool_expr . bool_expr_operator bool_expr
+    (37) bool_expr_operator -> . AND
+    (38) bool_expr_operator -> . OR
+
+    THEN            shift and go to state 58
+    AND             shift and go to state 60
+    OR              shift and go to state 61
+
+    bool_expr_operator             shift and go to state 59
+
+state 53
+
+    (41) bool_expr -> value_expr . EQUALS value_expr
+    (42) bool_expr -> value_expr . GREATER value_expr
+    (43) bool_expr -> value_expr . LOWER value_expr
+    (44) bool_expr -> value_expr . GREATEQ value_expr
+    (45) bool_expr -> value_expr . LOWEQ value_expr
+
+    EQUALS          shift and go to state 62
+    GREATER         shift and go to state 63
+    LOWER           shift and go to state 64
+    GREATEQ         shift and go to state 65
+    LOWEQ           shift and go to state 66
+
+
+state 54
+
+    (36) loop_stmt -> WHILE bool_expr . THEN expression END
+    (46) bool_expr -> bool_expr . bool_expr_operator bool_expr
+    (37) bool_expr_operator -> . AND
+    (38) bool_expr_operator -> . OR
+
+    THEN            shift and go to state 67
+    AND             shift and go to state 60
+    OR              shift and go to state 61
+
+    bool_expr_operator             shift and go to state 59
+
+state 55
+
+    (47) assign_expr -> TO IDENTIFIER . params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    ARGUMENT        shift and go to state 37
+
+    params                         shift and go to state 68
+
+state 56
+
+    (2) other_expression -> expression other_expression .
+
+    $end            reduce using rule 2 (other_expression -> expression other_expression .)
+
+
+state 57
+
+    (34) logo_expr -> SETXY value_expr value_expr .
+
+    NUMBER          reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    PENUP           reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    PU              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    PENDOWN         reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    PD              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    WIPECLEAN       reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    WC              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    CLEARSCREEN     reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    CS              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    HOME            reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    XCOR            reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    YCOR            reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    HEADING         reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    RANDOM          reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    TYPEIN          reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    FORWARD         reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    FO              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    BK              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    BACKWARD        reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    RIGHT           reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    RT              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    LEFT            reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    LT              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    PRINT           reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    SETXY           reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    IF              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    WHILE           reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    TO              reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    ARGUMENT        reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    $end            reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    END             reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+    ELSE            reduce using rule 34 (logo_expr -> SETXY value_expr value_expr .)
+
+
+state 58
+
+    (39) if_stmt -> IF bool_expr THEN . expression END
+    (40) if_stmt -> IF bool_expr THEN . expression ELSE expression END
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+    ARGUMENT        shift and go to state 37
+
+    expression                     shift and go to state 69
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+    params                         shift and go to state 8
+
+state 59
+
+    (46) bool_expr -> bool_expr bool_expr_operator . bool_expr
+    (41) bool_expr -> . value_expr EQUALS value_expr
+    (42) bool_expr -> . value_expr GREATER value_expr
+    (43) bool_expr -> . value_expr LOWER value_expr
+    (44) bool_expr -> . value_expr GREATEQ value_expr
+    (45) bool_expr -> . value_expr LOWEQ value_expr
+    (46) bool_expr -> . bool_expr bool_expr_operator bool_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    bool_expr                      shift and go to state 70
+    value_expr                     shift and go to state 53
+
+state 60
+
+    (37) bool_expr_operator -> AND .
+
+    NUMBER          reduce using rule 37 (bool_expr_operator -> AND .)
+
+
+state 61
+
+    (38) bool_expr_operator -> OR .
+
+    NUMBER          reduce using rule 38 (bool_expr_operator -> OR .)
+
+
+state 62
+
+    (41) bool_expr -> value_expr EQUALS . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 71
+
+state 63
+
+    (42) bool_expr -> value_expr GREATER . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 72
+
+state 64
+
+    (43) bool_expr -> value_expr LOWER . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 73
+
+state 65
+
+    (44) bool_expr -> value_expr GREATEQ . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 74
+
+state 66
+
+    (45) bool_expr -> value_expr LOWEQ . value_expr
+    (35) value_expr -> . NUMBER
+
+    NUMBER          shift and go to state 9
+
+    value_expr                     shift and go to state 75
+
+state 67
+
+    (36) loop_stmt -> WHILE bool_expr THEN . expression END
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+    ARGUMENT        shift and go to state 37
+
+    expression                     shift and go to state 76
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+    params                         shift and go to state 8
+
+state 68
+
+    (47) assign_expr -> TO IDENTIFIER params . expression END
+    (49) params -> params . ARGUMENT
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    ARGUMENT        shift and go to state 78
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+
+    params                         shift and go to state 8
+    expression                     shift and go to state 77
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+
+state 69
+
+    (39) if_stmt -> IF bool_expr THEN expression . END
+    (40) if_stmt -> IF bool_expr THEN expression . ELSE expression END
+
+    END             shift and go to state 79
+    ELSE            shift and go to state 80
+
+
+state 70
+
+    (46) bool_expr -> bool_expr bool_expr_operator bool_expr .
+    (46) bool_expr -> bool_expr . bool_expr_operator bool_expr
+    (37) bool_expr_operator -> . AND
+    (38) bool_expr_operator -> . OR
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    THEN            reduce using rule 46 (bool_expr -> bool_expr bool_expr_operator bool_expr .)
+    AND             shift and go to state 60
+    OR              shift and go to state 61
+
+  ! AND             [ reduce using rule 46 (bool_expr -> bool_expr bool_expr_operator bool_expr .) ]
+  ! OR              [ reduce using rule 46 (bool_expr -> bool_expr bool_expr_operator bool_expr .) ]
+
+    bool_expr_operator             shift and go to state 59
+
+state 71
+
+    (41) bool_expr -> value_expr EQUALS value_expr .
+
+    THEN            reduce using rule 41 (bool_expr -> value_expr EQUALS value_expr .)
+    AND             reduce using rule 41 (bool_expr -> value_expr EQUALS value_expr .)
+    OR              reduce using rule 41 (bool_expr -> value_expr EQUALS value_expr .)
+
+
+state 72
+
+    (42) bool_expr -> value_expr GREATER value_expr .
+
+    THEN            reduce using rule 42 (bool_expr -> value_expr GREATER value_expr .)
+    AND             reduce using rule 42 (bool_expr -> value_expr GREATER value_expr .)
+    OR              reduce using rule 42 (bool_expr -> value_expr GREATER value_expr .)
+
+
+state 73
+
+    (43) bool_expr -> value_expr LOWER value_expr .
+
+    THEN            reduce using rule 43 (bool_expr -> value_expr LOWER value_expr .)
+    AND             reduce using rule 43 (bool_expr -> value_expr LOWER value_expr .)
+    OR              reduce using rule 43 (bool_expr -> value_expr LOWER value_expr .)
+
+
+state 74
+
+    (44) bool_expr -> value_expr GREATEQ value_expr .
+
+    THEN            reduce using rule 44 (bool_expr -> value_expr GREATEQ value_expr .)
+    AND             reduce using rule 44 (bool_expr -> value_expr GREATEQ value_expr .)
+    OR              reduce using rule 44 (bool_expr -> value_expr GREATEQ value_expr .)
+
+
+state 75
+
+    (45) bool_expr -> value_expr LOWEQ value_expr .
+
+    THEN            reduce using rule 45 (bool_expr -> value_expr LOWEQ value_expr .)
+    AND             reduce using rule 45 (bool_expr -> value_expr LOWEQ value_expr .)
+    OR              reduce using rule 45 (bool_expr -> value_expr LOWEQ value_expr .)
+
+
+state 76
+
+    (36) loop_stmt -> WHILE bool_expr THEN expression . END
+
+    END             shift and go to state 81
+
+
+state 77
+
+    (47) assign_expr -> TO IDENTIFIER params expression . END
+
+    END             shift and go to state 82
+
+
+state 78
+
+    (49) params -> params ARGUMENT .
+    (48) params -> ARGUMENT .
+
+  ! reduce/reduce conflict for ARGUMENT resolved using rule 48 (params -> ARGUMENT .)
+    NUMBER          reduce using rule 49 (params -> params ARGUMENT .)
+    PENUP           reduce using rule 49 (params -> params ARGUMENT .)
+    PU              reduce using rule 49 (params -> params ARGUMENT .)
+    PENDOWN         reduce using rule 49 (params -> params ARGUMENT .)
+    PD              reduce using rule 49 (params -> params ARGUMENT .)
+    WIPECLEAN       reduce using rule 49 (params -> params ARGUMENT .)
+    WC              reduce using rule 49 (params -> params ARGUMENT .)
+    CLEARSCREEN     reduce using rule 49 (params -> params ARGUMENT .)
+    CS              reduce using rule 49 (params -> params ARGUMENT .)
+    HOME            reduce using rule 49 (params -> params ARGUMENT .)
+    XCOR            reduce using rule 49 (params -> params ARGUMENT .)
+    YCOR            reduce using rule 49 (params -> params ARGUMENT .)
+    HEADING         reduce using rule 49 (params -> params ARGUMENT .)
+    RANDOM          reduce using rule 49 (params -> params ARGUMENT .)
+    TYPEIN          reduce using rule 49 (params -> params ARGUMENT .)
+    FORWARD         reduce using rule 49 (params -> params ARGUMENT .)
+    FO              reduce using rule 49 (params -> params ARGUMENT .)
+    BK              reduce using rule 49 (params -> params ARGUMENT .)
+    BACKWARD        reduce using rule 49 (params -> params ARGUMENT .)
+    RIGHT           reduce using rule 49 (params -> params ARGUMENT .)
+    RT              reduce using rule 49 (params -> params ARGUMENT .)
+    LEFT            reduce using rule 49 (params -> params ARGUMENT .)
+    LT              reduce using rule 49 (params -> params ARGUMENT .)
+    PRINT           reduce using rule 49 (params -> params ARGUMENT .)
+    SETXY           reduce using rule 49 (params -> params ARGUMENT .)
+    IF              reduce using rule 49 (params -> params ARGUMENT .)
+    WHILE           reduce using rule 49 (params -> params ARGUMENT .)
+    TO              reduce using rule 49 (params -> params ARGUMENT .)
+    ARGUMENT        reduce using rule 48 (params -> ARGUMENT .)
+    END             reduce using rule 48 (params -> ARGUMENT .)
+
+  ! ARGUMENT        [ reduce using rule 49 (params -> params ARGUMENT .) ]
+
+
+state 79
+
+    (39) if_stmt -> IF bool_expr THEN expression END .
+
+    NUMBER          reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    PENUP           reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    PU              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    PENDOWN         reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    PD              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    WIPECLEAN       reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    WC              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    CLEARSCREEN     reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    CS              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    HOME            reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    XCOR            reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    YCOR            reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    HEADING         reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    RANDOM          reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    TYPEIN          reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    FORWARD         reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    FO              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    BK              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    BACKWARD        reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    RIGHT           reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    RT              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    LEFT            reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    LT              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    PRINT           reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    SETXY           reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    IF              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    WHILE           reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    TO              reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    ARGUMENT        reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    $end            reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    END             reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+    ELSE            reduce using rule 39 (if_stmt -> IF bool_expr THEN expression END .)
+
+
+state 80
+
+    (40) if_stmt -> IF bool_expr THEN expression ELSE . expression END
+    (4) expression -> . value_expr
+    (5) expression -> . logo_expr
+    (6) expression -> . if_stmt
+    (7) expression -> . loop_stmt
+    (8) expression -> . assign_expr
+    (9) expression -> . params
+    (35) value_expr -> . NUMBER
+    (11) logo_expr -> . PENUP
+    (12) logo_expr -> . PU
+    (13) logo_expr -> . PENDOWN
+    (14) logo_expr -> . PD
+    (15) logo_expr -> . WIPECLEAN
+    (16) logo_expr -> . WC
+    (17) logo_expr -> . CLEARSCREEN
+    (18) logo_expr -> . CS
+    (19) logo_expr -> . HOME
+    (20) logo_expr -> . XCOR
+    (21) logo_expr -> . YCOR
+    (22) logo_expr -> . HEADING
+    (23) logo_expr -> . RANDOM
+    (24) logo_expr -> . TYPEIN
+    (25) logo_expr -> . FORWARD value_expr
+    (26) logo_expr -> . FO value_expr
+    (27) logo_expr -> . BK value_expr
+    (28) logo_expr -> . BACKWARD value_expr
+    (29) logo_expr -> . RIGHT value_expr
+    (30) logo_expr -> . RT value_expr
+    (31) logo_expr -> . LEFT value_expr
+    (32) logo_expr -> . LT value_expr
+    (33) logo_expr -> . PRINT value_expr
+    (34) logo_expr -> . SETXY value_expr value_expr
+    (39) if_stmt -> . IF bool_expr THEN expression END
+    (40) if_stmt -> . IF bool_expr THEN expression ELSE expression END
+    (36) loop_stmt -> . WHILE bool_expr THEN expression END
+    (47) assign_expr -> . TO IDENTIFIER params expression END
+    (48) params -> . ARGUMENT
+    (49) params -> . params ARGUMENT
+
+    NUMBER          shift and go to state 9
+    PENUP           shift and go to state 10
+    PU              shift and go to state 11
+    PENDOWN         shift and go to state 12
+    PD              shift and go to state 13
+    WIPECLEAN       shift and go to state 14
+    WC              shift and go to state 15
+    CLEARSCREEN     shift and go to state 16
+    CS              shift and go to state 17
+    HOME            shift and go to state 18
+    XCOR            shift and go to state 19
+    YCOR            shift and go to state 20
+    HEADING         shift and go to state 21
+    RANDOM          shift and go to state 22
+    TYPEIN          shift and go to state 23
+    FORWARD         shift and go to state 24
+    FO              shift and go to state 25
+    BK              shift and go to state 26
+    BACKWARD        shift and go to state 27
+    RIGHT           shift and go to state 28
+    RT              shift and go to state 29
+    LEFT            shift and go to state 30
+    LT              shift and go to state 31
+    PRINT           shift and go to state 32
+    SETXY           shift and go to state 33
+    IF              shift and go to state 34
+    WHILE           shift and go to state 35
+    TO              shift and go to state 36
+    ARGUMENT        shift and go to state 37
+
+    expression                     shift and go to state 83
+    value_expr                     shift and go to state 3
+    logo_expr                      shift and go to state 4
+    if_stmt                        shift and go to state 5
+    loop_stmt                      shift and go to state 6
+    assign_expr                    shift and go to state 7
+    params                         shift and go to state 8
+
+state 81
+
+    (36) loop_stmt -> WHILE bool_expr THEN expression END .
+
+    NUMBER          reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    PENUP           reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    PU              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    PENDOWN         reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    PD              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    WIPECLEAN       reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    WC              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    CLEARSCREEN     reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    CS              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    HOME            reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    XCOR            reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    YCOR            reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    HEADING         reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    RANDOM          reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    TYPEIN          reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    FORWARD         reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    FO              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    BK              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    BACKWARD        reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    RIGHT           reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    RT              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    LEFT            reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    LT              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    PRINT           reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    SETXY           reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    IF              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    WHILE           reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    TO              reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    ARGUMENT        reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    $end            reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    END             reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+    ELSE            reduce using rule 36 (loop_stmt -> WHILE bool_expr THEN expression END .)
+
+
+state 82
+
+    (47) assign_expr -> TO IDENTIFIER params expression END .
+
+    NUMBER          reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    PENUP           reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    PU              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    PENDOWN         reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    PD              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    WIPECLEAN       reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    WC              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    CLEARSCREEN     reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    CS              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    HOME            reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    XCOR            reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    YCOR            reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    HEADING         reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    RANDOM          reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    TYPEIN          reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    FORWARD         reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    FO              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    BK              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    BACKWARD        reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    RIGHT           reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    RT              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    LEFT            reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    LT              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    PRINT           reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    SETXY           reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    IF              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    WHILE           reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    TO              reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    ARGUMENT        reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    $end            reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    END             reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+    ELSE            reduce using rule 47 (assign_expr -> TO IDENTIFIER params expression END .)
+
+
+state 83
+
+    (40) if_stmt -> IF bool_expr THEN expression ELSE expression . END
+
+    END             shift and go to state 84
+
+
+state 84
+
+    (40) if_stmt -> IF bool_expr THEN expression ELSE expression END .
+
+    NUMBER          reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    PENUP           reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    PU              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    PENDOWN         reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    PD              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    WIPECLEAN       reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    WC              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    CLEARSCREEN     reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    CS              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    HOME            reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    XCOR            reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    YCOR            reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    HEADING         reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    RANDOM          reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    TYPEIN          reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    FORWARD         reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    FO              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    BK              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    BACKWARD        reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    RIGHT           reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    RT              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    LEFT            reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    LT              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    PRINT           reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    SETXY           reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    IF              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    WHILE           reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    TO              reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    ARGUMENT        reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    $end            reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    END             reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+    ELSE            reduce using rule 40 (if_stmt -> IF bool_expr THEN expression ELSE expression END .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ARGUMENT in state 8 resolved as shift
+WARNING: shift/reduce conflict for AND in state 70 resolved as shift
+WARNING: shift/reduce conflict for OR in state 70 resolved as shift
+WARNING: reduce/reduce conflict in state 78 resolved using rule (params -> ARGUMENT)
+WARNING: rejected rule (params -> params ARGUMENT) in state 78
